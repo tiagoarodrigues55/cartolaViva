@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cartola</title>
+</head>
+<link rel="stylesheet" href="style15.css">
+<body>
+    <header><h1>Cartola Viva</h1></header>
+    <section><div>
+        <p>
+            Nome do time:
+            <input type="text" name="nome" id="nome">
+        </p>
+<div>
+    <p>Monte um time de 5 jogadores com até 30V$!</p>
+</div>
+    </div>
+    </section>
+    <br>
+    <section>
+            <div id="a">
+       Antonio Tocunduva - Ottomanos
+        <input type="button" value="7V$" onclick="comprar(0)">
+        <img src="antonio_t.png" alt="antonio_t" width="70px" height="90px">
+        </div>
+        <input type="button" value="vender" onclick="vender(0)">
+        </section>
+        <br>
+        <section>
+    
+    <div id="b">
+        Antonio Inglesi (basca) - Ottomanos
+        <input type="button" value="5V$" onclick="comprar(1)">
+        <img src="antonio_i.png" alt="antonio_i" width="70px" height="90px">
+        </div>
+        <input type="button" value="vender" onclick="vender(1)">
+    </section>
+    <br>
+    <section>
+    <div id="c">
+        Diego Garcia (dieguinho) - Ottomanos 
+        
+        <input type="button" value="9V$" onclick="comprar(2)" >
+        <img src="" alt="">
+        </div>
+        <input type="button" value="vender" onclick="vender(2)">
+    </section>
+    <br>
+    <section>
+    <div id="d">
+        Otto Lautert (Ottera) - Ottomanos
+        
+        <input type="button" value="4V$" onclick="comprar(3)">
+        <img src="otto_l.png" alt="otto_l" width="70px" height="90px">
+        </div>
+        <input type="button" value="vender" onclick="vender(3)">
+    </section>
+    <br>
+    <section>
+    <div id="e">
+        Pedro Caputo (Pedrão) - Ottomanos       
+        <input type="button" value="3V$" onclick="comprar(4)">
+        <img src="pedro_c.png" alt="pedro_c" width="70px" height="90px">
+        </div>
+        <input type="button" value="vender" onclick="vender(4)">
+    </section>
+    <br>
+    <section>
+     <div id="f">
+        Tiago Rodrigues (Americano) - Ottomanos
+        
+        <input type="button" value="8V$" onclick="comprar(5)">
+        <img src="tiago_r.jpg" alt="tiago_r" width="70px" height="90px">
+        </div>
+        <input type="button" value="vender" onclick="vender(5)">
+    </section>
+    <br>
+    <section>
+     <div id="g">
+        Jogador 7, "fotinho"
+        <input type="button" value="5V$" onclick="comprar(6)">
+        </div>
+        <input type="button" value="vender" onclick="vender(6)">
+    </section>
+    <br>
+    <section id="tempoReal">
+    
+        
+       <div id="res2">
+        <p>preço do Time:</p>
+        
+        </div>
+    </section>
+    <br>
+    <section id="res3">
+    <div id="res"> 
+        <p>Seu Time:</p>
+        <select name="lista" id="lista" size="6"></select></div>
+    <div>
+        <input type="button" value="fechar time" onclick="fechar()">
+    </div>
+</section>
+<footer><p>&copy;RODRIGUES</p></footer>
+    <script src="script15.js"></script>
+   
+</body>
+</html>

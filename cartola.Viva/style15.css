@@ -1,0 +1,41 @@
+body {
+background:rgb(238, 238, 241);
+font: normal 20pt;
+color: rgb(0, 0, 0);
+}
+header {
+    text-align: center;
+}
+section {
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    padding: 15px;
+    width: 500px;
+    margin: auto;
+    box-shadow: 3px 3px 10px black;
+    
+
+}
+#res3 {
+    position: sticky;
+    bottom: 100px;
+    margin-right: 100px;
+    padding: 5px;
+
+    width: 200px;
+} 
+#tempoReal {
+    position: sticky;
+    bottom: 100px;
+    margin-left: 100px;
+    padding: 5px;
+
+    width: 200px;
+} 
+select {
+    width: 150px;
+}
+footer {
+text-align: center;
+font-style: italic;
+}
