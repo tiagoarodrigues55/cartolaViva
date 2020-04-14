@@ -34,6 +34,7 @@ function comprar(n) {
     item3.value = "vender"
     y.appendChild(item3)
     document.body.insertAdjacentElementl(y, item3)
+    item3.addEventListener("click" , vender(n))
 
     
     

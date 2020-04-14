@@ -3,24 +3,23 @@ background: url("imgfutsal.jpg") no-repeat 0px 20px ;
 font: normal 20pt;
 color: white;
 }
+
 body{
-background: url("viva.jpg");
+background: rgb(219, 219, 219);
 font: normal 20pt;
-color: black;
+color: rgba(0, 0, 0, 0.61);
 }
 header {
     text-align: center;
 }
+
 section {
-    background-color: rgb(75, 70, 70);
-    border-radius: 10px;
+    background-color: white;
+    border-radius: 5px;
     padding: 15px;
     width: 500px;
     margin: auto;
     box-shadow: 3px 3px 10px black;
-    
-
-
 }
 p#slogam{
     position: relative;
@@ -123,13 +122,14 @@ h2#txtintro {
 nav#menu ul{
     list-style: none;
 }
+
 nav#menu li{
     display: inline-block;
-    background-color: rgb(15, 15, 15);
+    background-color: #3b5998;
     padding: 20px;
     margin: 0px;
     padding-top: 10px;
-    color: blue;
+    color: white;
     
 }
 nav#menu h1 {
@@ -138,19 +138,22 @@ nav#menu h1 {
 
 nav#menu a{
     text-decoration: none;
+    color: white;
 }
 nav#menu a:hover{
     color: rgba(247, 242, 242, 0.774);
 }
+
 nav#menu {
     position: absolute;
     top: 0px;
     left: 0px;
     width: 1366px;
-    background-color: rgb(15, 15, 15);
+    background-color: #3b5998;
     
     
 }
+
 #res3 {
     position: sticky;
     bottom: 40px;
