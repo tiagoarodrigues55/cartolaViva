@@ -38,7 +38,8 @@ section#propaganda {
     padding-top: 0px;
     position: absolute;
     top: 100px;
-    left: 20px;
+    /*left: 20px;*/
+    right: 970px;
 }
 img#fotobl32 {
     width: 350px;
@@ -165,7 +166,8 @@ nav#menu {
 #tempoReal {
     position: sticky;
     bottom: 100px;
-    margin-left: 100px;
+    /*margin-left: 100px;*/
+    margin-right: 990px;
     padding: 5px;
 
     width: 200px;
