@@ -1,4 +1,4 @@
-section#logo {
+/*section#logo {
     position: absolute;
     top: 20px;
     left: 1160px;
@@ -35,6 +35,7 @@ p#nome {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
 }
+
 p#c2 {
     position: absolute;
     top: -230px;
@@ -43,37 +44,43 @@ p#c2 {
     height: 80px;
     font-size: 200px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: #3b5998;
+    color: rgb(219, 219, 219);
 
 }
 section#logo3 {
     position: absolute;
     top: 100px;
-    left: 500px;
+    left: 300px;
     width: 110px;
     height: 140px;
-    background-color: #fafbfc;
+    background-color: #3b5998;
     box-shadow: none;
 }
 
 p#nome2 {
     position: absolute;
     top: 60px;
-    left: 650px;
+    left: 450px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 100px;
-    color: white;
+    color: #3b5998;
 }
 body#logo{
-    background-color: #3b5998;
+    background-color: rgb(219, 219, 219);
+}*/
+img#logo {
+    width: 10%;
+    height: 30%;
+    position: relative;
+    left: 83%;
 }
 body#telainicial {
 background: rgb(219, 219, 219);
 font: normal 20pt;
 color: black;
 }
-
 body{
+
 background: rgb(219, 219, 219);
 font: normal 20pt;
 color: rgba(0, 0, 0, 0.61);
@@ -106,7 +113,7 @@ section#propaganda {
     padding-right: 0px;
     padding-top: 0px;
     position: absolute;
-    top: 17%;
+    top: 19%;
     left: 1.46%;
     
 }
@@ -127,7 +134,7 @@ section#propaganda2 {
     padding-right: 11%;
     padding-top: 0.65%;
     position: absolute;
-    top: 15%;
+    top: 18%;
     left: 73.2%;
 }
 img#fotobl3 {
@@ -168,7 +175,7 @@ section#propaganda3 {
     padding-right: 0px;
     padding-top: 0px;
     position: absolute;
-    top: 37.1%;
+    top: 40.1%;
     left: 73.2%;
 }
 div#corpo {
