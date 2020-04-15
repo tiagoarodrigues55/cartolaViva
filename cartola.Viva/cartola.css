@@ -1,7 +1,44 @@
+section#logo {
+    position: absolute;
+    top: 25%;
+    left: 86.1%;
+    width: 0.2%;
+    height: 5%;
+    background-color: #fafbfc;
+    box-shadow: none;
+}
+p#c {
+    position: absolute;
+    top: -44px;
+    left: 5px;
+    width: 0.2%;
+    height: 5%;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #3b5998;
+
+}
+section#logo2 {
+    position: absolute;
+    top: 25%;
+    left: 85%;
+    width: 0.2%;
+    height: 5%;
+    background-color: #fafbfc;
+    box-shadow: none;
+}
+
+p#nome {
+    position: fixed;
+    top: 20px;
+    left: 1196px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+}
 body#telainicial {
-background: url("imgfutsal.jpg") no-repeat 0px 20px ;
+background: rgb(219, 219, 219);
 font: normal 20pt;
-color: white;
+color: black;
 }
 
 body{
@@ -140,6 +177,7 @@ nav#menu h1 {
 nav#menu a{
     text-decoration: none;
     color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 nav#menu a:hover{
     color: rgba(247, 242, 242, 0.774);
