@@ -1,73 +1,4 @@
-/*section#logo {
-    position: absolute;
-    top: 20px;
-    left: 1160px;
-    width: 0.2%;
-    height: 5%;
-    background-color: #fafbfc;
-    box-shadow: none;
-}
-p#c {
-    position: absolute;
-    top: -44px;
-    left: 5px;
-    width: 0.2%;
-    height: 5%;
-    font-size: 40px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: #3b5998;
 
-}
-section#logo2 {
-    position: absolute;
-    top: 20px;
-    left: 1160px;
-    width: 0.2%;
-    height: 5%;
-    background-color: #fafbfc;
-    box-shadow: none;
-}
-
-p#nome {
-    position: absolute;
-    top: 20px;
-    left: 1196px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: white;
-}
-
-p#c2 {
-    position: absolute;
-    top: -230px;
-    left: 15px;
-    width: 40px;
-    height: 80px;
-    font-size: 200px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: rgb(219, 219, 219);
-
-}
-section#logo3 {
-    position: absolute;
-    top: 100px;
-    left: 300px;
-    width: 110px;
-    height: 140px;
-    background-color: #3b5998;
-    box-shadow: none;
-}
-
-p#nome2 {
-    position: absolute;
-    top: 60px;
-    left: 450px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 100px;
-    color: #3b5998;
-}
-body#logo{
-    background-color: rgb(219, 219, 219);
-}*/
 img#logo {
     width: 10%;
     height: 30%;
@@ -78,6 +9,9 @@ body#telainicial {
 background: rgb(219, 219, 219);
 font: normal 20pt;
 color: black;
+}
+h1{
+    font-size: 40px;
 }
 body{
 
@@ -100,7 +34,7 @@ section {
 p#slogam{
     position: relative;
     bottom: 1.3%;
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
 }
 section#propaganda {
@@ -113,7 +47,7 @@ section#propaganda {
     padding-right: 0px;
     padding-top: 0px;
     position: absolute;
-    top: 19%;
+    top: 25%;
     left: 1.46%;
     
 }
@@ -148,13 +82,13 @@ p#slogam2 {
     position: relative;
     bottom: 100%;
     left: 90%;
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
 }
 p#slogam3{
     position: relative;
     bottom: 20px;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
 
 }
@@ -232,21 +166,19 @@ nav#menu {
     
 }
 
-#res3 {
+section#res3 {
     position: sticky;
     bottom: 5.2%;
     margin-right: 7.3%;
-    padding: 5px;
-
+    padding: 10px;
+    height: 20%;
     width: 14.6%;
 } 
 #tempoReal {
     position: sticky;
     bottom: 13%;
     margin-left: 7.3%;
-    
     padding: 5px;
-
     width: 14.6%;
 } 
 select {
@@ -255,4 +187,18 @@ select {
 footer {
 text-align: center;
 font-style: italic;
+}
+button {
+  border-radius: 3px;
+  margin-top: 20px;
+  line-height: 10px;
+  width: 56px;
+  font-weight: bold;
+  padding:  10px;
+  background: rgb(143, 137, 137);
+  border: none;
+}
+.toggleMenu {
+    display: none !important;
+    
 }

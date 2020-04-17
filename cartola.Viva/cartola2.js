@@ -1,6 +1,3 @@
-
-
-
 var a = document.getElementById("a")
 var b = document.getElementById("b")
 var c = document.getElementById("c")
@@ -18,15 +15,14 @@ let pre = []
 let jog = ['Antonio Tocunduva', 'Antonio Inglesi', 'Diego Garcia', 'Otto Lautert', 'Pedro Caputo', 'Tiago Rodrigues', 'jogador7']
 let divs = [document.getElementById("a"), document.getElementById("b"), document.getElementById("c"), document.getElementById("d"), document.getElementById("e"), document.getElementById("f"), document.getElementById("g")]
 
-
 let preço = [7, 5, 9, 4, 3, 8, 5]
 function comprar(n) {
     let esc = jog[n]
-    let y = divs[n]
+    //let y = divs[n]
     prec = preço[n]
     time.push(esc)
     pre.push(Number(prec))
-    y.innerText = `${esc} comprado`
+   // y.innerText = `${esc} comprado`
     let item = document.createElement('option')
     item.text = `${esc} ${prec}V$`
     lista.appendChild(item)
@@ -34,25 +30,23 @@ function comprar(n) {
    // let item3 = document.createElement("button")
    // item3.value = "vender"
    // y.appendChild(item3)
-    //document.body.insertAdjacentElement(y, item3)
-   //item3.addEventListener("click" , vender(n))
-    exibirBotão()
-var link = document.getElementById('link')
+   // document.body.insertAdjacentElementl(y, item3)
+   // item3.addEventListener("click" , vender(n))
+    
+    
+
+    
+    
+    
+     
+     
 }
-link.onclick = function (e){
-    e.preventDefault()
-    document.getElementById("vender").classList.toggle('toggleMenu')
-}
-function exibirBotão(){
-    document.getElementById("vender").style.display ='block'
-}
-let item2 = document.createElement('option')
 function atualizarPreço(){
     let timeprov = 0
         for (let pos in pre) {
             timeprov += pre[pos]
         }
-    
+    let item2 = document.createElement('option')
     item2.text = `${timeprov}V$`
     res2.innerHTML = `O preço do seu time é: ${item2.text}`
 }
@@ -80,7 +74,7 @@ function vender(n){
     let y = divs[n]
     y.innerHTML = `${esc}`
     atualizarPreço()
-   
+    
     
     
    }
@@ -106,39 +100,5 @@ function fechar() {
        
 }
 
-let antonio_t = {nome:'Antônio Tocunduva', preço: preço(), valorização: valorização(), pontuaçãoTotal: tot(), media: media(), pontuação:0, time: 'ottomanos', rodada:1}
-function preço(){
-    var preço = 5
-     preço=this.preço + valorização
-    return preço
-}
-function valorização(){
-    var valorização = 5
-     valorização = this.valorização*pontuação
-    return valorização
-}
-function media(){
-    var media = tot/rodada
-    return media 
-
-}
-function tot(){
-    var tot=0
-    tot = this.tot + pontuação
-    return tot
-}
 
 
-
-
-var tiago =0
-var jogador = document.getElementById('jogador')
-var rodada = document.getElementById('rodada')
-var pontuação = document.getElementById('pontuação')
-antonio_t.rodada = rodada
-antonio_t.pontuação = pontuação
-var objeto = document.getElementById('objeto')
-function mostrar() {
-    alert('eai')
-    objeto.innerHTML = `${antonio_t}`
-}
