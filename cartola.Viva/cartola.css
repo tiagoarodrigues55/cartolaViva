@@ -181,6 +181,10 @@ section#res3 {
     padding: 5px;
     width: 14.6%;
 } 
+a {
+    text-decoration: none;
+    color: black;
+}
 select {
     width: 100%;
 }
@@ -192,10 +196,10 @@ button {
   border-radius: 3px;
   margin-top: 20px;
   line-height: 10px;
-  width: 56px;
+  width: 70px;
   font-weight: bold;
   padding:  10px;
-  background: rgb(143, 137, 137);
+  background: #3b5998;
   border: none;
 }
 .toggleMenu {

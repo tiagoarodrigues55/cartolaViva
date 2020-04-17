@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fechar Time</title>
+</head>
+<link rel="stylesheet" href="cartola.css">
+<body>
+    <section>
+        <div>
+            <p>Se esse é realmente seu time final? Clique em finalizar!, caso contrário clique em "voltar"'</p>
+        </div>
+        <div id="timeFinal">
+            <ul></ul>
+        </div>
+        <a href="index.html">finalizar</a>
+        <br><br>
+        <a href="cartola.html">voltar</a>
+    </section>
+    <script>
+    function carregarLista(){
+        var listaTime = document.querySelector('ul')
+        var time = JSON.parse(localStorage.getItem('list_todos'))
+        for (i of time){
+            var todoElement2 = document.createElement('li')
+            var todoText2 = document.createTextNode(i)
+            todoElement2.appendChild(todoText2)
+            listaTime.appendChild(todoElement2)
+
+        }
+    }
+        carregarLista()
+        var timeFinal = document.querySelector('div#timeFinal')
+        timeFinal.innerHTML = `${listaTime}`
+    </script>
+    
+</body>
+</html>
