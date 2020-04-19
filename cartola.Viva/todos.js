@@ -1,39 +1,24 @@
 var listElement = document.querySelector('#app ul')
-
-//var inputElement = document.querySelector('#app input')
+//var inputElement = document.querySelector('#nome').value
 var buttonElement = document.querySelector('#app button')
 
-var todos = JSON.parse(localStorage.getItem('list_todos')) || []
-var pre = JSON.parse(localStorage.getItem('list_preço')) || []
 
-escolherConfronto(Ottomanos, Time2)
+var todos = JSON.parse(localStorage.getItem('list_nomes')) || []
+var pre = JSON.parse(localStorage.getItem('list_preço')) || []
+var ids = JSON.parse(localStorage.getItem('list_id')) || []
+var Ottomanos = JSON.parse(localStorage.getItem('object_Ottomanos')) || {}
+//var nomeDoTime = JSON.parse(localStorage.getItem('nome')) || []
+//var nomes = [inputElement]
+//escolherConfronto(Ottomanos, Time2)
 
 
 
 function renderTodos() {
     listElement.innerHTML =  ''
-    
-
     for (todo of todos) {
         var todoElement = document.createElement('li')
         var todoText = document.createTextNode(todo)
-        
-        //var linkElement = document.createElement('a')
-
-       // linkElement.setAttribute('href', '#')
-
-        //var pos = todos.indexOf(todo)
-
-        //linkElement.setAttribute('onclick', 'deleteTodo(' + pos + ')')
-
-       // var linkText = document.createTextNode(' vender')
-
-        //linkElement.appendChild(linkText)
-
         todoElement.appendChild(todoText)
-
-        //todoElement.appendChild(linkElement)
-
         listElement.appendChild(todoElement)
     }
      var timeprov = 0
@@ -45,30 +30,10 @@ function renderTodos() {
 }
 renderTodos()
 
-var antonio_t = {nome: 'Antonio Tocunduva', custo: 7, foto: 'antonio_t.png', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: 'próximo jogo', valorização: 'função'}
-var antonio_i = {nome: 'Antonio Inglesi (basca)', custo: 5, foto: 'antonio_i.png', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: 'próximo jogo', valorização: 'função'}
-var diego_g = {nome: 'Diego Garcia (dieguinho)', custo: 9, foto: 'none', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: 'próximo jogo', valorização: 'função'}
-var otto_l = {nome: 'Otto Lautert (Ottera)', custo: 4, foto: 'otto_l.png', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: 'próximo jogo', valorização: 'função'}
-var pedro_c = {nome: 'Pedro Caputo (Pedrão)', custo: 3, foto: 'pedro_c.png', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: 'próximo jogo', valorização: 'função'}
-var tiago_r = {nome: 'Tiago Rodrigues (Americano)', custo: 8, foto: 'tiago_r.jpg', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: 'próximo jogo', valorização: 'função'}
-var jogador7 = {nome: 'Bento Rodrigues', custo: 15, foto: 'bl3.webp', time: 'outro', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: 'próximo jogo', valorização: 'função'}
 
 
 
-var fotoOttomanos = [antonio_t.foto, antonio_i.foto, diego_g.foto, otto_l.foto, pedro_c.foto, tiago_r.foto, jogador7.foto]
-var nomesOttomanos =[antonio_t.nome, antonio_i.nome, diego_g.nome, otto_l.nome, pedro_c.nome, tiago_r.nome, jogador7.nome]
-var preçosOttomanos = [antonio_t.custo, antonio_i.custo, diego_g.custo, otto_l.custo, pedro_c.custo, tiago_r.custo, jogador7.custo]
-
-const Ottomanos = {
-    img: fotoOttomanos,
-    jogadores: nomesOttomanos,
-    preço: preçosOttomanos
-}
-const Time2 = {
-    img: ['foto1','foto2','foto3'],
-    jogadores: ['jogador1', 'jogador2', 'jogador3'],
-    preço: [1, 2, 3]
-}
+/*                                                                                                                                                                                                                                                                   
 var a = [];
 var img = [];
 var jogadores = [];
@@ -90,15 +55,27 @@ function escolherConfronto(nomeDoTime1, nomeDoTime2) {
     return a.push(item);
   });
   preço = nomeDoTime1.preço;
-}
+  a = nomeDoTime1.id;
+  a = nomeDoTime2.id.map(function (item) {
+    return a.push(item);
+  });
+  id = nomeDoTime1.id;
+}*/
+var img = Ottomanos.img
+var jogadores = Ottomanos.jogadores
+var preço = Ottomanos.preço
+var id = Ottomanos.nomes
+
 
 function addTodo(n) {
     var a = jogadores[n]
     var b = preço[n]
+    var c = id[n]
     var todoText = a
     var todoText2 = b
     pre.push(todoText2)
     todos.push(todoText)
+    ids.push(c)
     mudarLayout(n)
     renderTodos()
     saveToStorage()
@@ -111,6 +88,7 @@ function deleteTodo(n) {
     var pos = todos.indexOf(`${jogadores[n]}`)
     todos.splice(pos, 1)
     pre.splice(pos, 1)
+    ids.splice(pos, 1)
     mudarLayout2(n)
     renderTodos()
     saveToStorage()
@@ -119,8 +97,11 @@ function deleteTodo(n) {
 
 
 function saveToStorage() {
-    localStorage.setItem('list_todos', JSON.stringify(todos))
+    localStorage.setItem('list_nomes', JSON.stringify(todos))
+    localStorage.setItem('list_id', JSON.stringify(ids))
     localStorage.setItem('list_preço', JSON.stringify(pre))
+    localStorage.setItem('object_Ottomanos', JSON.stringify(Ottomanos))
+   // localStorage.setItem('nome', JSON.stringify(nomes))
 }
 
 var letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
@@ -147,9 +128,8 @@ function mudarLayout2(n) {
     console.log(`o parametro de mudarlayout2 é ${n}`)
 }
 
-
+//Criar cartola.html
 var div0 = document.querySelector('div#a')
-
 var nome0 = document.createElement('p')
 var textnome0 = document.createTextNode(`${jogadores[0]}`)
 nome0.appendChild(textnome0)
@@ -359,7 +339,7 @@ if (todos.indexOf(jogadores[6])!= -1){
 }
 
 
-
+//fechar time
 function verificar(){
     var timeprov = 0
         for (var pos in pre) {

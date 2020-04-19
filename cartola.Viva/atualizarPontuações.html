@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Pontuações</title>
+</head>
+<link rel="stylesheet" href="cartola.css">
+<body>
+    <section id="pont">
+        <input type="text" placeholder="time1, time2" id="times">
+       <button onclick="criarbotão()">criar botão</button>
+        
+    </section>
+    
+    <script>
+       
+        var local = document.querySelector('section#pont')
+        var Ottomanos = JSON.parse(localStorage.getItem('object_Ottomanos')) || {}
+
+        function criarbotão(){
+            var time1 = document.querySelector('#times').value
+            var botão = document.createElement('button')
+            var text = document.createTextNode('criar página')
+            botão.appendChild(text)
+            botão.setAttribute('onclick', `criarpg(${time1})`)
+            local.appendChild(botão)
+        }
+        
+       
+        var criarInputString = []
+        var pontuação1
+        var criarInputn = []
+        var newInputs = []
+        var buscaId = []
+        function criarpg(time) {
+            for (i=0;i<time.nomes.length; i++){
+                criarInputString.push(`criarInput${i}`)
+            }
+            for (i of criarInputString){
+                var i
+                criarInputn.push(i)
+            }
+            for (var i = 0; i<time.nomes.length; i++){
+                criarInputn[i] = document.createElement('input')
+                criarInputn[i].setAttribute('placeholder', `${time.nomes[i].nome}`)
+                criarInputn[i].setAttribute('id', `${i}`)
+                local.appendChild(criarInputn[i])
+            }
+            
+         
+            var botãoAtualizar = document.createElement('button')
+            var text = document.createTextNode('atualizar')
+            botãoAtualizar.appendChild(text)
+            pontuação1 = time
+            botãoAtualizar.setAttribute('onclick', 'atualizar(pontuação1)')
+            local.appendChild(botãoAtualizar)
+            
+        }
+        function atualizar(time){ 
+            
+        for (var i=0;i<time.nomes.length;i++){
+            buscaId.push(document.getElementById(`${i}`).value)
+            }
+            for (var i=0; i<time.nomes.length;i++){
+                time.nomes[i] = {...time.nomes[i], pontuação: buscaId[i]}
+            }
+            saveToStorage()
+           console.log(Ottomanos.nomes)
+        }
+        function saveToStorage() {
+            localStorage.setItem('object_Ottomanos', JSON.stringify(Ottomanos))
+        }
+    
+        
+         
+       
+    </script>
+</body>
+</html>

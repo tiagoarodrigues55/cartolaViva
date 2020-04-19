@@ -206,3 +206,20 @@ button {
     display: none !important;
     
 }
+table {
+    position: relative;
+    left: 45px;
+    border: 2px solid black;
+    border-spacing: 0px;
+}
+table td{
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 4px;
+    text-align: center;
+}
+table th{
+    border: 1px solid black;
+    padding: 10px;
+    
+}
