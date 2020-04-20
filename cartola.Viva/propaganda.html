@@ -16,11 +16,12 @@
 var div = document.querySelector('#prop1')
 var div2 = document.querySelector('#prop2')
 
-function gerarPropaganda(src, src2, width1, height1, width2, height2, txt, txt2){
+function gerarPropaganda(nome, src, src2, width1, height1, width2, height2, txt, txt2){
 var link1 = document.createElement('a');
-link1.setAttribute('href', 'cartola.html');
+
+link1.setAttribute('onclick', `contabilizar(${nome}, 0)`);
 var link2 = document.createElement('a');
-link2.setAttribute('href', 'cartola.html');
+link2.setAttribute('onclick', `contabilizar(${nome}, 1)`);
 var nome0 = document.createElement('p');
 var textnome0 = document.createTextNode(txt);
 nome0.appendChild(textnome0);
@@ -44,17 +45,45 @@ img1.height = height2;
 link2.appendChild(img1);
 div2.appendChild(link2);
 };
-const propagandas = {propaganda1: {foto1: 'bl3.webp', foto2: 'bl32.webp', width1: 400, height1: 400, width2: 500, height2: 400, txt1: 'Aulas de windsurf', txt2: 'Aulas de kitesurf'}}
-var fotos1 = [propagandas.propaganda.foto1]
-var fotos2 = [propagandas.propaganda1.foto2]
-var width1 = [propagandas.propaganda1.width1]
-var height1 = [propagandas.propaganda1.height1]
-var width2 = [propagandas.propaganda1.width2]
-var height2 = [propagandas.propaganda1.height2]
-var txt1 = [propagandas.propaganda1.txt1]
-var txt2 = [propagandas.propaganda1.txt2]
+var porcentagem = JSON.parse(localStorage.getItem('propaganda_porcentagens')) || {}
+var Bl31 = JSON.parse(localStorage.getItem('propaganda_Bl31')) || []
+const propagandas = [{fotoEmpresa: 'bl3.webp', nome: 'Bl31', foto1: 'bl3.webp', foto2: 'bl32.webp', width1: 400, height1: 400, width2: 500, height2: 400, txt1: 'Aulas de windsurf', txt2: 'Aulas de kitesurf', dados: Bl31, porcentagem: porcentagem.Bl31}]
+var nomes = [propagandas[0].nome]
+var fotos1 = [propagandas[0].foto1]
+var fotos2 = [propagandas[0].foto2]
+var width1 = [propagandas[0].width1]
+var height1 = [propagandas[0].height1]
+var width2 = [propagandas[0].width2]
+var height2 = [propagandas[0].height2]
+var txt1 = [propagandas[0].txt1]
+var txt2 = [propagandas[0].txt2]
 
-gerarPropaganda(fotos1[0], fotos2[0], width1[0], height1[0], width2[0], height2[0], txt1[0], txt2[0]);
+gerarPropaganda(nomes[0], fotos1[0], fotos2[0], width1[0], height1[0], width2[0], height2[0], txt1[0], txt2[0]);
+
+console.log(Bl31.indexOf(0))
+function contabilizar(p, n){
+    p.push(n)
+    var p0 = 0
+    for(var i of p){
+        if (i === 0){
+            p0 += 1
+        }
+    }
+    var porP = p0/p.length*100
+    porcentagem.p = porP.toFixed()
+    for (var i = 0; i<propagandas.length;i++){
+        propagandas[i].porcentagem = porcentagem.p
+    }
+    saveToStorage()
+    window.location.href = 'cartola.html'
+}
+
+function saveToStorage() {
+    localStorage.setItem('propaganda_Bl31', JSON.stringify(Bl31))
+    localStorage.setItem('list_propagandas', JSON.stringify(propagandas))
+    localStorage.setItem('propaganda_porcentagens', JSON.stringify(porcentagem))
+}
+
     </script>
 </body>
 </html>

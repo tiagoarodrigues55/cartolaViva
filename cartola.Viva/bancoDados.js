@@ -20,10 +20,19 @@ const Ottomanos = {
     preço: preçosOttomanos
 }
 
-
-
+const propagandas = [{fotoEmpresa: 'bl3.webp', nome: 'Bl31', foto1: 'bl3.webp', foto2: 'bl32.webp', width1: 400, height1: 400, width2: 500, height2: 400, txt1: 'Aulas de windsurf', txt2: 'Aulas de kitesurf', dados: Bl31, porcentagem: porcentagem.Bl31}]
+var Bl31 = JSON.parse(localStorage.getItem('propaganda_Bl31')) || []
+var porcentagem = JSON.parse(localStorage.getItem('propaganda_porcentagens')) || {}
 const Time2 = {
     img: ['foto1','foto2','foto3'],
     jogadores: ['jogador1', 'jogador2', 'jogador3'],
     preço: [1, 2, 3]
+
+}
+saveToStorage()
+function saveToStorage() {
+    
+    localStorage.setItem('object_Ottomanos', JSON.stringify(Ottomanos))
+    localStorage.setItem('list_propagandas', JSON.stringify(propagandas))
+   
 }
