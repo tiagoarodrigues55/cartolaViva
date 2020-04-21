@@ -70,9 +70,10 @@ function contabilizar(p, n){
         }
     }
     var porP = p0/p.length*100
-    porcentagem.p = porP.toFixed()
+    
+    porcentagem = {...porcentagem, p: porP.toFixed()}
     for (var i = 0; i<propagandas.length;i++){
-        propagandas[i].porcentagem = porcentagem.p
+        propagandas[i].porcentagem = porcentagem[i]
     }
     saveToStorage()
     window.location.href = 'cartola.html'

@@ -1,17 +1,32 @@
+//import criarElemento from './dom'
 var listElement = document.querySelector('#app ul')
+
 //var inputElement = document.querySelector('#nome').value
 var buttonElement = document.querySelector('#app button')
 
 
-var todos = JSON.parse(localStorage.getItem('list_nomes')) || []
+var todos = JSON.parse(localStorage.getItem('list_nomesjog')) || []
 var pre = JSON.parse(localStorage.getItem('list_preço')) || []
 var ids = JSON.parse(localStorage.getItem('list_id')) || []
-var Ottomanos = JSON.parse(localStorage.getItem('object_Ottomanos')) || {}
+var usuarios = JSON.parse(localStorage.getItem('list_usuarios')) || []
+var emails = JSON.parse(localStorage.getItem('list_emails')) || []
+var senhas = JSON.parse(localStorage.getItem('list_senhas')) || []
+
+//var Ottomanos = JSON.parse(localStorage.getItem('object_Ottomanos')) || {}
 //var nomeDoTime = JSON.parse(localStorage.getItem('nome')) || []
 //var nomes = [inputElement]
 //escolherConfronto(Ottomanos, Time2)
-
-
+criarElemento('h1', '', 'Login', '', 'form')
+criarElemento('br', '', '', '', 'form')
+criarElemento('img', '', 'logo2.png', 'width: 200px; float: right; position: relative; bottom: 20px;', 'form')
+criarElemento('br', '', '', '', 'form')
+criarElemento('input', 'email', 'email', 'email', 'form')
+criarElemento('br', '', '', '', 'form')
+criarElemento('input', 'senha', 'senha', 'senha', 'form')
+criarElemento('br', '', '', '', 'form')
+criarElemento('button', 'button', 'Entrar', "login()", 'form')
+criarElemento('br', '', '', '', 'form')
+criarElemento('a', 'link', 'cadastre-se aqui', 'cadastrar.html', 'form')
 
 function renderTodos() {
     listElement.innerHTML =  ''
@@ -97,7 +112,7 @@ function deleteTodo(n) {
 
 
 function saveToStorage() {
-    localStorage.setItem('list_nomes', JSON.stringify(todos))
+    localStorage.setItem('list_nomesjog', JSON.stringify(todos))
     localStorage.setItem('list_id', JSON.stringify(ids))
     localStorage.setItem('list_preço', JSON.stringify(pre))
     localStorage.setItem('object_Ottomanos', JSON.stringify(Ottomanos))
@@ -129,6 +144,7 @@ function mudarLayout2(n) {
 }
 
 //Criar cartola.html
+
 var div0 = document.querySelector('div#a')
 var nome0 = document.createElement('p')
 var textnome0 = document.createTextNode(`${jogadores[0]}`)
@@ -155,7 +171,11 @@ if (todos.indexOf(jogadores[0])!= -1){
     botão0.appendChild(textbotão0)
     div0.appendChild(botão0)
 }
-
+/*var lerMais0 = document.createElement('a')
+var txtLerMais0 = document.createTextNode('mais infos')
+lerMais0.setAttribute('onclick', 'lerMais(0)')
+lerMais0.appendChild(txtLerMais0)
+div0.appendChild(lerMais0)*/
 
 var div1 = document.querySelector('div#b')
 
@@ -174,7 +194,7 @@ if (todos.indexOf(jogadores[1])!= -1){
     var botão1 = document.createElement('button')
     var textbotão1 = document.createTextNode('vender')
     botão1.setAttribute('onclick', 'deleteTodo(' + 1 + ')')
-    botão1.appendChild(textbotão0)
+    botão1.appendChild(textbotão1)
     div1.appendChild(botão1)
 
 }else{
@@ -361,3 +381,86 @@ function verificar(){
         alert('Seu time precisa ter 5 jogadores!')
     }
 }
+
+function criarElemento(elemento, id, txt, função, endereçoId){
+  if (elemento === 'button'){
+    let endereço = document.getElementById(endereçoId)
+    let nome = document.createElement(elemento)
+    nome.appendChild(document.createTextNode(txt))
+    nome.setAttribute('id', id)
+    nome.setAttribute('onclick', função)
+    endereço.appendChild(nome)
+  }else{
+    if (elemento === 'input'){
+      let endereço = document.getElementById(endereçoId)
+      let nome = document.createElement(elemento)
+      nome.setAttribute('placeholder', txt)
+      nome.setAttribute('id', id)
+      nome.setAttribute('type', função)
+      endereço.appendChild(nome)
+    }else{
+      if (elemento === 'a'){
+        let endereço = document.getElementById(endereçoId)
+        let nome = document.createElement(elemento)
+        nome.setAttribute('href', função)
+        nome.setAttribute('id', id)
+        nome.appendChild(document.createTextNode(txt))
+        endereço.appendChild(nome)
+      }else{
+        if(elemento === 'img'){
+          let endereço = document.getElementById(endereçoId)
+          let nome = document.createElement(elemento)
+          nome.setAttribute('src', txt)
+          nome.setAttribute('style', função)
+          nome.setAttribute('id', id)
+          nome.appendChild(document.createTextNode(txt))
+          endereço.appendChild(nome)
+        }else{
+          let endereço = document.getElementById(endereçoId)
+          let nome = document.createElement(elemento)
+          nome.appendChild(document.createTextNode(txt))
+          nome.setAttribute('id', id)
+          endereço.appendChild(nome)
+        }
+      }
+    }
+  }
+}
+
+
+var vivacoins
+var txt = document.createTextNode(`Monte um time de 5 jogadores com até ${vivacoins}V$!`)
+var p = document.getElementById('preço')
+p.appendChild(txt)
+function login(){
+        var email = document.querySelector('input#email').value 
+        var emails = JSON.parse(localStorage.getItem('list_emails')) || []
+        var senha = document.querySelector('input#senha').value 
+        var senhas = JSON.parse(localStorage.getItem('list_senhas')) || []
+        if (emails.indexOf(email)!= -1){
+            let i = emails.indexOf(email)
+            if (senha == senhas[i]){
+                entrar(i)
+                function entrar(i){
+                    vivacoins = usuarios[i].vivacoins
+                    console.log(vivacoins)
+                    document.getElementById('email').remove()
+                    document.getElementById('senha').remove()
+                    document.getElementById('button').remove()
+                    document.getElementById('link').remove()
+                    criarElemento('h2','', `Bem vindo ${}`)
+
+                }
+                
+                alert(i)
+            }else{
+                alert('senha incorreta')
+            }
+        }else{
+            alert('Esse email não está cadastrado')
+        }
+    }
+
+
+
+

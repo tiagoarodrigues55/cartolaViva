@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="cartola.css">
 <body>
     <section id="pont">
-        <input type="text" placeholder="time1, time2" id="times">
+        <input type="text" placeholder="time" id="times">
+        <input type="number" placeholder="rodada" id="rodada">
        <button onclick="criarbotão()">criar botão</button>
         
     </section>
@@ -34,6 +35,7 @@
         var newInputs = []
         var buscaId = []
         function criarpg(time) {
+            var rodada = document.querySelector('#rodada')
             for (i=0;i<time.nomes.length; i++){
                 criarInputString.push(`criarInput${i}`)
             }
@@ -53,17 +55,17 @@
             var text = document.createTextNode('atualizar')
             botãoAtualizar.appendChild(text)
             pontuação1 = time
-            botãoAtualizar.setAttribute('onclick', 'atualizar(pontuação1)')
+            botãoAtualizar.setAttribute('onclick', 'atualizar(pontuação1, rodada)')
             local.appendChild(botãoAtualizar)
             
         }
-        function atualizar(time){ 
-            
+        
+        function atualizar(time, rodada){ 
         for (var i=0;i<time.nomes.length;i++){
             buscaId.push(document.getElementById(`${i}`).value)
             }
             for (var i=0; i<time.nomes.length;i++){
-                time.nomes[i] = {...time.nomes[i], pontuação: buscaId[i]}
+                time.nomes[i].pontuação[rodada] = (buscaId[i])
             }
             saveToStorage()
            console.log(Ottomanos.nomes)
