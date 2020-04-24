@@ -201,6 +201,7 @@ button {
   padding:  10px;
   background: #3b5998;
   border: none;
+  color: #fff;
 }
 .toggleMenu {
     display: none !important;

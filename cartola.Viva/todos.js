@@ -4,7 +4,7 @@ var listElement = document.querySelector('#app ul')
 //var inputElement = document.querySelector('#nome').value
 var buttonElement = document.querySelector('#app button')
 
-
+var Ottomanos = JSON.parse(localStorage.getItem('object_Ottomanos')) || {}
 var todos = JSON.parse(localStorage.getItem('list_nomesjog')) || []
 var pre = JSON.parse(localStorage.getItem('list_preço')) || []
 var ids = JSON.parse(localStorage.getItem('list_id')) || []
@@ -16,17 +16,7 @@ var senhas = JSON.parse(localStorage.getItem('list_senhas')) || []
 //var nomeDoTime = JSON.parse(localStorage.getItem('nome')) || []
 //var nomes = [inputElement]
 //escolherConfronto(Ottomanos, Time2)
-criarElemento('h1', '', 'Login', '', 'form')
-criarElemento('br', '', '', '', 'form')
-criarElemento('img', '', 'logo2.png', 'width: 200px; float: right; position: relative; bottom: 20px;', 'form')
-criarElemento('br', '', '', '', 'form')
-criarElemento('input', 'email', 'email', 'email', 'form')
-criarElemento('br', '', '', '', 'form')
-criarElemento('input', 'senha', 'senha', 'senha', 'form')
-criarElemento('br', '', '', '', 'form')
-criarElemento('button', 'button', 'Entrar', "login()", 'form')
-criarElemento('br', '', '', '', 'form')
-criarElemento('a', 'link', 'cadastre-se aqui', 'cadastrar.html', 'form')
+
 
 function renderTodos() {
     listElement.innerHTML =  ''
@@ -119,28 +109,48 @@ function saveToStorage() {
    // localStorage.setItem('nome', JSON.stringify(nomes))
 }
 
-var letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+var letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't']
 function mudarLayout(n){
-    var botão = document.querySelector(`div#${letras[n]} button`)
+    document.querySelector(`button#${letras[n]}`).remove()
     var newbutton = document.createElement('button')
+    newbutton.setAttribute('id', `${letras[n]}`)
     newbutton.setAttribute('onclick', 'deleteTodo(' + n + ')')
+    newbutton.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     var textNewbutton = document.createTextNode('vender')
     newbutton.appendChild(textNewbutton)
     var div = document.querySelector(`div#${letras[n]}`)
     div.appendChild(newbutton)
-    div.removeChild(botão)
+    
     console.log(`o parametro de mudar layout 1 é ${n}`)
 }
 function mudarLayout2(n) {
-    var botão = document.querySelector(`div#${letras[n]} button`)
+    document.querySelector(`button#${letras[n]}`).remove()
     var newbutton = document.createElement('button')
+    newbutton.setAttribute('id', `${letras[n]}`)
     newbutton.setAttribute('onclick', 'addTodo(' + n + ')')
+    newbutton.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     var textNewbutton = document.createTextNode(`${preço[n]}V$`)
     newbutton.appendChild(textNewbutton)
     var div = document.querySelector(`div#${letras[n]}`)
     div.appendChild(newbutton)
-    div.removeChild(botão)
+    
     console.log(`o parametro de mudarlayout2 é ${n}`)
+}
+
+function lerMais(n){
+    
+    document.querySelector(`#lerMais${n}`).remove()
+    criarElemento('button', `lerMenos${n}`, 'Menos informações', `lerMenos(${n})`, `${letras[n]}`)
+    criarElemento('div', `div${n}`, '', '', `${letras[n]}`)
+    criarElemento('p', '', `Media: ${Ottomanos.nomes[n].media}`, '', `div${n}`)
+    criarElemento('p', '', `Ultima pontuação: ${Ottomanos.nomes[n].ultimaPontuação}`, '', `div${n}`)
+    criarElemento('p', '', `Valorização: ${Ottomanos.nomes[n].valorização}`, '', `div${n}`)
+    
+}
+function lerMenos(n){
+document.querySelector(`#div${n}`).remove()
+document.querySelector(`#lerMenos${n}`).remove()
+criarElemento('button', `lerMais${n}`, 'Mais informações', `lerMais(${n})`, `${letras[n]}`)
 }
 
 //Criar cartola.html
@@ -157,10 +167,14 @@ img0.width = 70
 img0.height = 90
 div0.appendChild(img0)
 
+criarElemento('button', 'lerMais0', 'Mais informações', 'lerMais(0)', 'a')
+
 if (todos.indexOf(jogadores[0])!= -1){
     var botão0 = document.createElement('button')
     var textbotão0 = document.createTextNode('vender')
     botão0.setAttribute('onclick', 'deleteTodo(' + 0 + ')')
+    botão0.setAttribute('id', 'a')
+    botão0.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão0.appendChild(textbotão0)
     div0.appendChild(botão0)
 
@@ -168,14 +182,13 @@ if (todos.indexOf(jogadores[0])!= -1){
     var botão0 = document.createElement('button')
     var textbotão0 = document.createTextNode(`${preço[0]}V$`)
     botão0.setAttribute('onclick', 'addTodo(' + 0 + ')')
+    botão0.setAttribute('id', 'a')
+    botão0.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão0.appendChild(textbotão0)
     div0.appendChild(botão0)
 }
-/*var lerMais0 = document.createElement('a')
-var txtLerMais0 = document.createTextNode('mais infos')
-lerMais0.setAttribute('onclick', 'lerMais(0)')
-lerMais0.appendChild(txtLerMais0)
-div0.appendChild(lerMais0)*/
+
+
 
 var div1 = document.querySelector('div#b')
 
@@ -190,10 +203,14 @@ img1.width = 70
 img1.height = 90
 div1.appendChild(img1)
 
+criarElemento('button', 'lerMais1', 'Mais informações', 'lerMais(1)', 'b')
+
 if (todos.indexOf(jogadores[1])!= -1){
     var botão1 = document.createElement('button')
     var textbotão1 = document.createTextNode('vender')
     botão1.setAttribute('onclick', 'deleteTodo(' + 1 + ')')
+    botão1.setAttribute('id', 'b')
+    botão1.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão1.appendChild(textbotão1)
     div1.appendChild(botão1)
 
@@ -201,6 +218,8 @@ if (todos.indexOf(jogadores[1])!= -1){
     var botão1 = document.createElement('button')
     var textbotão1 = document.createTextNode(`${preço[1]}V$`)
     botão1.setAttribute('onclick', 'addTodo(' + 1 + ')')
+    botão1.setAttribute('id', 'b')
+    botão1.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão1.appendChild(textbotão1)
     div1.appendChild(botão1)
 }
@@ -220,10 +239,14 @@ img2.width = 70
 img2.height = 90
 div2.appendChild(img2)*/
 
+criarElemento('button', 'lerMais2', 'Mais informações', 'lerMais(2)', 'c')
+
 if (todos.indexOf(jogadores[2])!= -1){
     var botão2 = document.createElement('button')
     var textbotão2 = document.createTextNode('vender')
     botão2.setAttribute('onclick', 'deleteTodo(' + 2 + ')')
+    botão2.setAttribute('id', 'c')
+    botão2.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão2.appendChild(textbotão2)
     div2.appendChild(botão2)
 
@@ -231,6 +254,8 @@ if (todos.indexOf(jogadores[2])!= -1){
     var botão2 = document.createElement('button')
     var textbotão2 = document.createTextNode(`${preço[2]}V$`)
     botão2.setAttribute('onclick', 'addTodo(' + 2 + ')')
+    botão2.setAttribute('id', 'c')
+    botão2.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão2.appendChild(textbotão2)
     div2.appendChild(botão2)
 }
@@ -251,10 +276,14 @@ img3.width = 70
 img3.height = 90
 div3.appendChild(img3)
 
+criarElemento('button', 'lerMais3', 'Mais informações', 'lerMais(3)', 'd')
+
 if (todos.indexOf(jogadores[3])!= -1){
     var botão3 = document.createElement('button')
     var textbotão3 = document.createTextNode('vender')
     botão3.setAttribute('onclick', 'deleteTodo(' + 3 + ')')
+    botão3.setAttribute('id', 'd')
+    botão3.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão3.appendChild(textbotão3)
     div3.appendChild(botão3)
 
@@ -262,6 +291,8 @@ if (todos.indexOf(jogadores[3])!= -1){
     var botão3 = document.createElement('button')
     var textbotão3 = document.createTextNode(`${preço[3]}V$`)
     botão3.setAttribute('onclick', 'addTodo(' + 3 + ')')
+    botão3.setAttribute('id', 'd')
+    botão3.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão3.appendChild(textbotão3)
     div3.appendChild(botão3)
 }
@@ -282,10 +313,14 @@ img4.width = 70
 img4.height = 90
 div4.appendChild(img4)
 
+criarElemento('button', 'lerMais4', 'Mais informações', 'lerMais(4)', 'e')
+
 if (todos.indexOf(jogadores[4])!= -1){
     var botão4 = document.createElement('button')
     var textbotão4 = document.createTextNode('vender')
     botão4.setAttribute('onclick', 'deleteTodo(' + 4 + ')')
+    botão4.setAttribute('id', 'e')
+    botão4.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão4.appendChild(textbotão4)
     div4.appendChild(botão4)
 
@@ -293,6 +328,8 @@ if (todos.indexOf(jogadores[4])!= -1){
     var botão4 = document.createElement('button')
     var textbotão4 = document.createTextNode(`${preço[4]}V$`)
     botão4.setAttribute('onclick', 'addTodo(' + 4 + ')')
+    botão4.setAttribute('id', 'e')
+    botão4.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão4.appendChild(textbotão4)
     div4.appendChild(botão4)
 }
@@ -313,10 +350,14 @@ img5.width = 70
 img5.height = 90
 div5.appendChild(img5)
 
+criarElemento('button', 'lerMais5', 'Mais informações', 'lerMais(5)', 'f')
+
 if (todos.indexOf(jogadores[5])!= -1){
     var botão5 = document.createElement('button')
     var textbotão5 = document.createTextNode('vender')
     botão5.setAttribute('onclick', 'deleteTodo(' + 5 + ')')
+    botão5.setAttribute('id', 'f')
+    botão5.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão5.appendChild(textbotão5)
     div5.appendChild(botão5)
 
@@ -324,6 +365,8 @@ if (todos.indexOf(jogadores[5])!= -1){
     var botão5 = document.createElement('button')
     var textbotão5 = document.createTextNode(`${preço[5]}V$`)
     botão5.setAttribute('onclick', 'addTodo(' + 5 + ')')
+    botão5.setAttribute('id', 'f')
+    botão5.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão5.appendChild(textbotão5)
     div5.appendChild(botão5)
 }
@@ -343,10 +386,14 @@ img6.width = 70
 img6.height = 90
 div6.appendChild(img6)
 
+criarElemento('button', 'lerMais6', 'Mais informações', 'lerMais(6)', 'g')
+
 if (todos.indexOf(jogadores[6])!= -1){
     var botão6 = document.createElement('button')
     var textbotão6 = document.createTextNode('vender')
     botão6.setAttribute('onclick', 'deleteTodo(' + 6 + ')')
+    botão6.setAttribute('id', 'g')
+    botão6.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão6.appendChild(textbotão6)
     div6.appendChild(botão6)
 
@@ -354,6 +401,8 @@ if (todos.indexOf(jogadores[6])!= -1){
     var botão6 = document.createElement('button')
     var textbotão6 = document.createTextNode(`${preço[6]}V$`)
     botão6.setAttribute('onclick', 'addTodo(' + 6 + ')')
+    botão6.setAttribute('id', 'g')
+    botão6.setAttribute('style', 'position: relative; bottom: -5px; left: 20px;')
     botão6.appendChild(textbotão6)
     div6.appendChild(botão6)
 }
@@ -428,38 +477,6 @@ function criarElemento(elemento, id, txt, função, endereçoId){
 }
 
 
-var vivacoins
-var txt = document.createTextNode(`Monte um time de 5 jogadores com até ${vivacoins}V$!`)
-var p = document.getElementById('preço')
-p.appendChild(txt)
-function login(){
-        var email = document.querySelector('input#email').value 
-        var emails = JSON.parse(localStorage.getItem('list_emails')) || []
-        var senha = document.querySelector('input#senha').value 
-        var senhas = JSON.parse(localStorage.getItem('list_senhas')) || []
-        if (emails.indexOf(email)!= -1){
-            let i = emails.indexOf(email)
-            if (senha == senhas[i]){
-                entrar(i)
-                function entrar(i){
-                    vivacoins = usuarios[i].vivacoins
-                    console.log(vivacoins)
-                    document.getElementById('email').remove()
-                    document.getElementById('senha').remove()
-                    document.getElementById('button').remove()
-                    document.getElementById('link').remove()
-                    criarElemento('h2','', `Bem vindo ${}`)
-
-                }
-                
-                alert(i)
-            }else{
-                alert('senha incorreta')
-            }
-        }else{
-            alert('Esse email não está cadastrado')
-        }
-    }
 
 
 

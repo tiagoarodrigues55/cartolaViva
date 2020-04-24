@@ -1,10 +1,10 @@
-var antonio_t = {nome: 'Antonio Tocunduva', custo: 7, foto: 'antonio_t.png', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: [], valorização: 'função'}
-var antonio_i = {nome: 'Antonio Inglesi (basca)', custo: 5, foto: 'antonio_i.png', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: [], valorização: 'função'}
-var diego_g = {nome: 'Diego Garcia (dieguinho)', custo: 9, foto: 'none', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: [], valorização: 'função'}
-var otto_l = {nome: 'Otto Lautert (Ottera)', custo: 4, foto: 'otto_l.png', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: [], valorização: 'função'}
-var pedro_c = {nome: 'Pedro Caputo (Pedrão)', custo: 3, foto: 'pedro_c.png', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: [], valorização: 'função'}
-var tiago_r = {nome: 'Tiago Rodrigues (Americano)', custo: 8, foto: 'tiago_r.jpg', time: 'Ottomanos', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: [], valorização: 'função'}
-var jogador7 = {nome: 'Bento Rodrigues', custo: 15, foto: 'bl3.webp', time: 'outro', media: 'função', ultimaPontuação: 'ultimo jogo', pontuação: [], valorização: 'função'}
+var antonio_t = {nome: 'Antonio Tocunduva', custo: 7, foto: 'antonio_t.png', time: 'Ottomanos', media: 0, ultimaPontuação: 0, pontuação: [], valorização: 0}
+var antonio_i = {nome: 'Antonio Inglesi (basca)', custo: 5, foto: 'antonio_i.png', time: 'Ottomanos', media: 0, ultimaPontuação: 0, pontuação: [], valorização: 0}
+var diego_g = {nome: 'Diego Garcia (dieguinho)', custo: 9, foto: 'none', time: 'Ottomanos', media: 0, ultimaPontuação: 0, pontuação: [], valorização: 0}
+var otto_l = {nome: 'Otto Lautert (Ottera)', custo: 4, foto: 'otto_l.png', time: 'Ottomanos', media: 0, ultimaPontuação: 0, pontuação: [], valorização: 0}
+var pedro_c = {nome: 'Pedro Caputo (Pedrão)', custo: 3, foto: 'pedro_c.png', time: 'Ottomanos', media: 0, ultimaPontuação: 0, pontuação: [], valorização: 0}
+var tiago_r = {nome: 'Tiago Rodrigues (Americano)', custo: 8, foto: 'tiago_r.jpg', time: 'Ottomanos', media: 0, ultimaPontuação: 0, pontuação: [], valorização: 0}
+var jogador7 = {nome: 'Bento Rodrigues', custo: 15, foto: 'bl3.webp', time: 'outro', media: 0, ultimaPontuação: 0, pontuação: [], valorização: 0}
 
 
 

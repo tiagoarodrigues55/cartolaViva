@@ -9,7 +9,6 @@
 <body>
     <section id="pont">
         <input type="text" placeholder="time" id="times">
-        <input type="number" placeholder="rodada" id="rodada">
        <button onclick="criarbotão()">criar botão</button>
         
     </section>
@@ -35,7 +34,7 @@
         var newInputs = []
         var buscaId = []
         function criarpg(time) {
-            var rodada = document.querySelector('#rodada')
+           
             for (i=0;i<time.nomes.length; i++){
                 criarInputString.push(`criarInput${i}`)
             }
@@ -55,28 +54,53 @@
             var text = document.createTextNode('atualizar')
             botãoAtualizar.appendChild(text)
             pontuação1 = time
-            botãoAtualizar.setAttribute('onclick', 'atualizar(pontuação1, rodada)')
+            botãoAtualizar.setAttribute('onclick', 'atualizar(pontuação1)')
             local.appendChild(botãoAtualizar)
             
         }
         
-        function atualizar(time, rodada){ 
+        function atualizar(time){ 
+            
         for (var i=0;i<time.nomes.length;i++){
-            buscaId.push(document.getElementById(`${i}`).value)
+            buscaId.push(Number(document.getElementById(`${i}`).value))
             }
+            
             for (var i=0; i<time.nomes.length;i++){
-                time.nomes[i].pontuação[rodada] = (buscaId[i])
+                time.nomes[i].pontuação.push(buscaId[i])
+                time.nomes[i].ultimaPontuação = buscaId[i]
             }
-            saveToStorage()
-           console.log(Ottomanos.nomes)
+            
+            
+           
+            var total = []
+            var media = []
+            var con = 0
+        for (i of Ottomanos.nomes){
+            var tot = 0
+            var med = 0
+            for(let p of i.pontuação){
+                tot += p
+            }
+            med = tot/i.pontuação.length
+                total.push(tot)
+                media.push(med)
+            
+            i.media = media[con]
+            i.total = total[con]
+            
+            con++
+        }
+        console.log(Ottomanos.nomes)
+        saveToStorage()
         }
         function saveToStorage() {
             localStorage.setItem('object_Ottomanos', JSON.stringify(Ottomanos))
         }
     
-        
+       
          
        
     </script>
+   
 </body>
 </html>
