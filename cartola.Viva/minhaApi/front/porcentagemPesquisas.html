@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Porcentagens</title>
 </head>
-<link rel="stylesheet" href="cartola.css">
+<!--<link rel="stylesheet" href="cartola.css">-->
+<link rel="stylesheet" href="mobile.css">
 <body>
     <nav id="menu">
         <h1>Menu</h1>
@@ -32,10 +33,11 @@
         
         for(let i of porcentagem1){
             var section = document.createElement('section')
+            section.setAttribute('class', 'porcentagem')
             var divTitulo = document.createElement('div')
             var nome = document.createElement('h1')
             var imgTitulo = document.createElement('img')
-            imgTitulo.setAttribute('src', i.fotoEmpresa)
+            imgTitulo.setAttribute('src', i.fotoempresa)
             
             divTitulo.appendChild(imgTitulo)
             nomeTxt = document.createTextNode(i.nome)
@@ -43,9 +45,7 @@
             divTitulo.appendChild(nome)
             section.appendChild(divTitulo)
             var divMãe = document.createElement('div')
-            section.setAttribute('style', 'width: 1000px;')
             var div = document.createElement('div')
-            div.setAttribute('style', 'display: inline-block; margin-left: 100px;')
             var p = document.createElement('p')
             p.setAttribute('style', 'font-size: 50px;')
             var txtPrincipal = document.createTextNode(`${i.porcentagem}%`)
@@ -59,7 +59,7 @@
 
             
             var div2 = document.createElement('div')
-            div2.setAttribute('style', 'display: inline-block; margin-left: 100px')
+           
             var p3 = document.createElement('p')
             p3.setAttribute('style', 'font-size: 50px;')
             var txtPrincipal2 = document.createTextNode(`${100-i.porcentagem}%`)

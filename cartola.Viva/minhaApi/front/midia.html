@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Midia</title>
 </head>
-<link rel="stylesheet" href="cartola.css">
+<!--<link rel="stylesheet" href="cartola.css">-->
+<link rel="stylesheet" href="mobile.css">
 <body>
     <nav id="menu">
         <h1>Menu</h1>
@@ -24,10 +25,7 @@
     <img src="logo.png" alt="logo1" id="logo">
 <div id="corpo">
     <header></header>
-    <section>
-        <div>
-            <img src="tiago_r.jpg" alt="tiago_r">
-        </div>
+    <section id="midia" class="fullpg">
     </section>
     <footer><p>by Tiago Rodrigues <br>
         <a href="https://www.instagram.com/cartolaviva/">instagram: @cartolaviva</a>
@@ -35,5 +33,14 @@
 
     </p></footer>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script>
+function criarPg(midias, tipo){
+    for (i of midias){
+        criarElemento('div', 'div', '', '', 'midia')
+        criarElemento(`${tipo}`, 'mid', '', '', 'div')
+    }
+}
+</script>
 </body>
 </html>

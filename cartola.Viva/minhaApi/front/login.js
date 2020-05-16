@@ -22,11 +22,10 @@ axios.get('http://localhost:3000/users').then(response => {
 
 criarElemento('h1', '', 'Login', '', 'form')
 criarElemento('br', '', '', '', 'form')
-criarElemento('img', '', 'logo2.png', 'width: 200px; float: right; position: relative; bottom: 20px;', 'form')
-criarElemento('br', '', '', '', 'form')
 criarElemento('input', 'email', 'email', 'email', 'form')
 criarElemento('br', '', '', '', 'form')
 criarElemento('input', 'senha', 'senha', 'password', 'form')
+criarElemento('br', '', '', '', 'form')
 criarElemento('br', '', '', '', 'form')
 criarElemento('button', 'button', 'Entrar', "login()", 'form')
 criarElemento('br', '', '', '', 'form')

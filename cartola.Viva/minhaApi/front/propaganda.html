@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>propaganda</title>
 </head>
-<link rel="stylesheet" href="cartola.css">
+<!--<link rel="stylesheet" href="cartola.css">-->
+<link rel="stylesheet" href="mobile.css">
 <body>
-    <section id="prop" style="width: 1000px; height: 600px;">
+    <section id="prop">
         <h1>O que você prefere? Clique na imagem</h1>
         <div id="prop1" style="display: inline-block;"></div>
         <div id="prop2" style="display: inline-block;"></div>
@@ -18,7 +19,7 @@
 var div = document.querySelector('#prop1')
 var div2 = document.querySelector('#prop2')
 
-function gerarPropaganda(nome, src, src2, width1, height1, width2, height2, txt, txt2){
+function gerarPropaganda(nome, src, src2, txt, txt2){
 var link1 = document.createElement('a');
 
 link1.setAttribute('onclick', `contabilizar(${nome}, 0)`);
@@ -30,8 +31,7 @@ nome0.appendChild(textnome0);
 div.appendChild(nome0);
 var img0 = document.createElement('img');
 img0.src = src;
-img0.width = width1;
-img0.height = height1;
+img0.setAttribute('class', 'imgProp')
 link1.appendChild(img0);
 div.appendChild(link1);
 
@@ -42,8 +42,7 @@ div2.appendChild(nome1);
 
 var img1 = document.createElement('img');
 img1.src = src2;
-img1.width = width2;
-img1.height = height2;
+img1.setAttribute('class', 'imgProp')
 link2.appendChild(img1);
 div2.appendChild(link2);
 };
@@ -64,14 +63,10 @@ function espera(){
 var nomes = propagandas[r].nome
 var fotos1 = propagandas[r].foto1
 var fotos2 = propagandas[r].foto2
-var width1 = propagandas[r].width1
-var height1 = propagandas[r].height1
-var width2 = propagandas[r].width2
-var height2 = propagandas[r].height2
 var txt1 = propagandas[r].txt1
 var txt2 = propagandas[r].txt2
 
-gerarPropaganda(nomes, fotos1, fotos2, width1, height1, width2, height2, txt1, txt2);
+gerarPropaganda(nomes, fotos1, fotos2, txt1, txt2);
 }
 function contabilizar(p, n){
     p.push(n)

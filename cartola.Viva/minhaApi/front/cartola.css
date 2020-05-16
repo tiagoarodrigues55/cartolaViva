@@ -112,6 +112,13 @@ section#propaganda3 {
     top: 40.1%;
     left: 73.2%;
 }
+.imgProp{
+    width: 40vh;
+}
+#Prop{
+    width: 1000px; 
+    height: 600px;
+}
 div#corpo {
     margin-top: 10%;
 }

@@ -9,9 +9,7 @@ const PropagandaController = require('./controllers/PropagandaController')
 const PorcentagemController = require('./controllers/PorcentagemController')
 const JogadoresController = require('./controllers/JogadoresController')
 
-routes.get('/', (req, res)=>{
-    res.sendFile(path.join('../front/index.html'))
-  })
+
 
 routes.get('/users', UserController.index)
 routes.get('/users/:user_id', UserController.indexId)

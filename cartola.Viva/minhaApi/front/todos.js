@@ -20,6 +20,7 @@ function renderTodos() {
     listElement.innerHTML =  ''
     for (todo of todos) {
         var todoElement = document.createElement('li')
+        todoElement.setAttribute('class', 'time')
         var todoText = document.createTextNode(todo)
         todoElement.appendChild(todoText)
         listElement.appendChild(todoElement)
@@ -83,7 +84,6 @@ function addTodo(x) {
     mudarLayout(n+1)
     renderTodos()
     saveToStorage()
-    console.log(`o parametro de addTodo é ${n}`)
 }
 
 
@@ -114,6 +114,7 @@ function mudarLayout(n){
     document.querySelector(`#botão${n}`).remove()
     var newbutton = document.createElement('button')
     newbutton.setAttribute('id', `botão${n}`)
+    newbutton.setAttribute('class', 'vender')
     newbutton.setAttribute('onclick', 'deleteTodo(' + n + ')')
     var textNewbutton = document.createTextNode('vender')
     newbutton.appendChild(textNewbutton)
@@ -126,6 +127,7 @@ function mudarLayout2(n) {
     document.querySelector(`#botão${n}`).remove()
     var newbutton = document.createElement('button')
     newbutton.setAttribute('id', `botão${n}`)
+    newbutton.setAttribute('class', 'comprar')
     newbutton.setAttribute('onclick', 'addTodo(' + n + ')')
     var textNewbutton = document.createTextNode(`${preço[n-1]}V$`)
     newbutton.appendChild(textNewbutton)
@@ -139,6 +141,7 @@ function lerMais(n){
     
     document.querySelector(`#lerMais${n}`).remove()
     criarElemento('button', `lerMenos${n}`, 'Menos informações', `lerMenos(${n})`, `div${n}2`)
+    document.getElementById(`lerMenos${n}`).setAttribute('class', 'ler')
     criarElemento('div', `div${n}3`, '', '', `div${n}2`)
     criarElemento('p', '', `Media: ${Ottomanos.nomes[n-1].media}`, '', `div${n}3`)
     criarElemento('p', '', `Ultima pontuação: ${Ottomanos.nomes[n-1].ultimapontuação}`, '', `div${n}3`)
@@ -149,6 +152,7 @@ function lerMenos(n){
 document.querySelector(`#div${n}3`).remove()
 document.querySelector(`#lerMenos${n}`).remove()
 criarElemento('button', `lerMais${n}`, 'Mais informações', `lerMais(${n})`, `div${n}2`)
+document.getElementById(`lerMais${n}`).setAttribute('class', 'ler')
 }
 
 
@@ -235,11 +239,14 @@ for (i of jog){
     criarElemento('img', '', `${i.img}`, 'width: 70px; height: 90px;', `div${i.id}`)
     if (ids.indexOf(i.id)!= -1){
         criarElemento('button', `botão${i.id}`, 'vender', `deleteTodo(${i.id})`, `div${i.id}`)
+        document.getElementById(`botão${i.id}`).setAttribute('class', 'vender')
     }else{
-        criarElemento('button', `botão${i.id}`, `${i.preço}`, `addTodo(${i.id})`, `div${i.id}`)
+        criarElemento('button', `botão${i.id}`, `${i.preço}V$`, `addTodo(${i.id})`, `div${i.id}`)
+        document.getElementById(`botão${i.id}`).setAttribute('class', 'comprar')
     }
     criarElemento('br', '', '', '', `div${i.id}2`)
-    criarElemento('button', `lerMais${i.id}`, 'Ler mais', `lerMais(${i.id})`, `div${i.id}2`)
+    criarElemento('button', `lerMais${i.id}`, 'Mais informações', `lerMais(${i.id})`, `div${i.id}2`)
+    document.getElementById(`lerMais${i.id}`).setAttribute('class', 'ler')
     criarElemento('br', '', '', '', `jogadores`)
 }
 }
