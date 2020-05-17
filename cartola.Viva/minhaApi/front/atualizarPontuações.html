@@ -19,6 +19,8 @@
        
         var local = document.querySelector('section#pont')
         var Ottomanos = JSON.parse(localStorage.getItem('object_Ottomanos')) || []
+        console.log(Ottomanos.nomes)
+
         var time1
         var rodada = 1
         function criarbotão(){
@@ -60,7 +62,6 @@
                 a++
             }
         }
-        console.log(Ottomanos.nomes)
 
         var criarInputString = []
         var pontuação1
@@ -69,7 +70,7 @@
         var buscaId = []
         var botãoAtualizar
         function criarpg(time) {
-
+            
             for (i=0;i<time.nomes.length; i++){
                 criarInputString.push(`criarInput${i}`)
             }
@@ -100,9 +101,40 @@
         for (var i=0;i<time.nomes.length;i++){
             buscaId.push(Number(document.getElementById(`${i}`).value))
             }
+            var mediaAntiga = []
+            var con = 0
+            var valorização= []
+        for (i of time.nomes){
+            var u = i.ultimapontuação
+            var p = buscaId[con]
+            var c = i.preço
+            var g = i.jogos
+            var r = g+1
+            var tot = 0
+            var med = 0
+            for(let p of i.pontuação){
+                tot += p
+            }
+            med = tot/i.pontuação.length
+                mediaAntiga.push(med)
             
+            var a = mediaAntiga[con]     
+            var a0 = (a*g-u)/(g-1)
+            var cr = c/r
+            var pr = p/r
+            var ur = u/r
+            var val = 0.158*p + 0.004*c - 0.1588*u + 0.0064*a0 + 0.514*pr - 0.3134*cr + ur*0.2803
+            if (c + val < 0.7){    
+            val = 0.7 - c
+            }
+            i.valorização = Number(val.toFixed(2))
+            valorização.push(Number(val.toFixed(2)))
+            console.log(a, g, c, r, p, u)
+            con++
+        }
+        console.log(valorização)
             for (var i=0; i<time.nomes.length;i++){
-                time.nomes[i].ultimaPontuação = buscaId[i]
+                time.nomes[i].ultimapontuação = buscaId[i]
             }
             
             var total = []
@@ -114,7 +146,8 @@
             for(let p of i.pontuação){
                 tot += p
             }
-            med = tot/i.pontuação.length
+            tot += i.ultimapontuação
+            med = tot/i.pontuação.length+1
                 total.push(tot)
                 media.push(med)
             
@@ -123,7 +156,7 @@
             
             con++
         }
-        console.log(Ottomanos.nomes)
+        
         saveToStorage()
         saveDb(time)
             botãoAtualizar.remove()
@@ -135,13 +168,17 @@
         }
         function saveDb(time){
             console.log('executou saveDB')
-            for (let i = 0; i<time.nomes.length-1; i++){
+            console.log(Ottomanos.nomes)
+            
+            for (let i = 0; i<time.nomes.length; i++){
                 axios.put(`http://localhost:3000/jogadores/${i+1}`, {
                     media: time.nomes[i].media,
-                    preço: time.nomes[i].preço,
+                    preço: time.nomes[i].preço + time.nomes[i].valorização,
                     ultimapontuação: time.nomes[i].ultimapontuação,
-                    valorização: 0
+                    valorização: time.nomes[i].valorização,
+                    jogos: time.nomes[i].pontuação.length
                 })
+                console.log(time.nomes[i])
             }
             if (time === Ottomanos){
             axios.post(`http://localhost:3000/pontuacoesotto`, {
@@ -167,6 +204,7 @@
             
         for (i of escalações2){
             var ultimapontuação
+            var valorização
             var tot
             axios.get('http://localhost:3000/jogadores').then(response => {
                 var jogador1 = response.data[i.jogador1_id-1].ultimapontuação
@@ -176,19 +214,29 @@
                 var jogador5 = response.data[i.jogador5_id-1].ultimapontuação
                 ultimapontuação = jogador1 + jogador2 + jogador3 + jogador4 + jogador5
                 console.log(ultimapontuação, jogador1, jogador2)
+                var jogador1 = response.data[i.jogador1_id-1].valorização
+                var jogador2 = response.data[i.jogador2_id-1].valorização
+                var jogador3 = response.data[i.jogador3_id-1].valorização
+                var jogador4 = response.data[i.jogador4_id-1].valorização
+                var jogador5 = response.data[i.jogador5_id-1].valorização
+                valorização = jogador1 + jogador2 + jogador3 + jogador4 + jogador5
+                console.log(valorização)
             })
             axios.get(`http://localhost:3000/users/${i.user_id}`).then(response => {
             tot = response.data.pontos
+            let coins = response.data.vivacoins
             console.log(tot, response.data)
-            resto2(tot, ultimapontuação)
+            resto2(tot, ultimapontuação, coins)
             })
         }
-        function resto2(tot, ultimapontuação){
+        function resto2(tot, ultimapontuação, coins){
             let pontos = tot + ultimapontuação
-            console.log(pontos, tot, ultimapontuação)
+            let vivacoins = coins + valorização
+            console.log(pontos, tot, ultimapontuação, vivacoins)
             axios.put(`http://localhost:3000/users/${i.user_id}/p`,{
                 ultimapontuação,
-                pontos
+                pontos,
+                vivacoins
             })
         }
 

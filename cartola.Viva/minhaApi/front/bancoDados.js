@@ -17,11 +17,14 @@ var preçosOttomanos = [antonio_t.preço, antonio_i.preço, diego_g.preço, otto
 var idOttomanos =  [antonio_t, antonio_i, diego_g, otto_l, pedro_c, tiago_r]
 var Ottomanos = {
     nomesReais: nomesOttomanos,
-    nomes: idOttomanos,
+    nomes: idOttomanos.sort(function(a,b) {
+        return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
+        }),
     img: fotoOttomanos,
     jogadores: nomesOttomanos,
     preço: preçosOttomanos
 }
+
 console.log(Ottomanos)
 localStorage.setItem('object_Ottomanos', JSON.stringify(Ottomanos))
 }

@@ -28,8 +28,8 @@ module.exports = {
     },
     async updateP(req, res){
         const { id } = req.params
-        const { pontos, ultimapontuação } = req.body
-        const user = User.update({ pontos, ultimapontuação }, {where: { id: id}})
+        const { pontos, ultimapontuação, vivacoins } = req.body
+        const user = User.update({ pontos, ultimapontuação, vivacoins }, {where: { id: id}})
         return res.json(user)
     }
 }

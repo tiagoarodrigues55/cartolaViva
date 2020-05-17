@@ -32,6 +32,10 @@ module.exports = {
           type: Sequelize.FLOAT,
           allowNull: false
         },
+        jogos : {
+          type: Sequelize.INTEGER,
+          allowNull: true
+        },
         created_at: {
           type: Sequelize.DATE,
           allowNull: false,

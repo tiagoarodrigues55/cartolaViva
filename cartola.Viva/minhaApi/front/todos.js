@@ -29,7 +29,7 @@ function renderTodos() {
         for (var pos in pre) {
             timeprov += pre[pos]
         }
-    res.innerHTML = `O preço do seu time é: ${timeprov}V$`
+    res.innerHTML = `O preço do seu time é: ${timeprov.toFixed(2)}V$`
     
 }
 renderTodos()
@@ -72,9 +72,10 @@ var id = Ottomanos.nomes
 
 
 function addTodo(x) {
+  console.log(jogadores)
     var n = x-1
     var a = jogadores[n]
-    var b = preço[n]
+    var b = Number(preço[n].toFixed(2))
     var c = id[n].id
     var todoText = a
     var todoText2 = b
@@ -129,7 +130,7 @@ function mudarLayout2(n) {
     newbutton.setAttribute('id', `botão${n}`)
     newbutton.setAttribute('class', 'comprar')
     newbutton.setAttribute('onclick', 'addTodo(' + n + ')')
-    var textNewbutton = document.createTextNode(`${preço[n-1]}V$`)
+    var textNewbutton = document.createTextNode(`${preço[n-1].toFixed(2)}V$`)
     newbutton.appendChild(textNewbutton)
     var div = document.querySelector(`#div${n}`)
     div.appendChild(newbutton)
@@ -145,8 +146,17 @@ function lerMais(n){
     criarElemento('div', `div${n}3`, '', '', `div${n}2`)
     criarElemento('p', '', `Media: ${Ottomanos.nomes[n-1].media}`, '', `div${n}3`)
     criarElemento('p', '', `Ultima pontuação: ${Ottomanos.nomes[n-1].ultimapontuação}`, '', `div${n}3`)
-    criarElemento('p', '', `Valorização: ${Ottomanos.nomes[n-1].valorização}`, '', `div${n}3`)
     
+    if(Ottomanos.nomes[n-1].valorização > 0){
+      criarElemento('p', '', `Valorização: ${Ottomanos.nomes[n-1].valorização}`, 'color: green;', `div${n}3`)
+    }
+    else{
+      if (Ottomanos.nomes[n-1].valorização === 0){
+        criarElemento('p', '', `Valorização: ${Ottomanos.nomes[n-1].valorização}`, '', `div${n}3`)
+        }else{
+      criarElemento('p', '', `Valorização: ${Ottomanos.nomes[n-1].valorização}`, 'color: red;', `div${n}3`)
+        }
+    }
 }
 function lerMenos(n){
 document.querySelector(`#div${n}3`).remove()
@@ -216,6 +226,7 @@ function criarElemento(elemento, id, txt, função, endereçoId){
           let endereço = document.getElementById(endereçoId)
           let nome = document.createElement(elemento)
           nome.appendChild(document.createTextNode(txt))
+          nome.setAttribute('style', função)
           nome.setAttribute('id', id)
           endereço.appendChild(nome)
         }
@@ -233,6 +244,7 @@ axios.get('http://localhost:3000/jogadores')
 function criarPg(jog){
 for (i of jog){
     criarElemento('section', `section${i.id}`, '', '', 'jogadores')
+    document.getElementById(`section${i.id}`).setAttribute('class', 'alinhado')
     criarElemento('div', `div${i.id}`, '', '', `section${i.id}`)
     criarElemento('div', `div${i.id}2`, '', '', `section${i.id}`)
     criarElemento('p', '', `${i.name}`, '', `div${i.id}`)
@@ -241,7 +253,7 @@ for (i of jog){
         criarElemento('button', `botão${i.id}`, 'vender', `deleteTodo(${i.id})`, `div${i.id}`)
         document.getElementById(`botão${i.id}`).setAttribute('class', 'vender')
     }else{
-        criarElemento('button', `botão${i.id}`, `${i.preço}V$`, `addTodo(${i.id})`, `div${i.id}`)
+        criarElemento('button', `botão${i.id}`, `${i.preço.toFixed(2)}V$`, `addTodo(${i.id})`, `div${i.id}`)
         document.getElementById(`botão${i.id}`).setAttribute('class', 'comprar')
     }
     criarElemento('br', '', '', '', `div${i.id}2`)

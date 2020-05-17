@@ -9,7 +9,7 @@ class Jogadores extends Model {
             media : DataTypes.FLOAT,
             ultimapontuação : DataTypes.FLOAT,
             valorização : DataTypes.FLOAT,
-
+            jogos: DataTypes.INTEGER
         }, {
             sequelize
         })
