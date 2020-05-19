@@ -77,13 +77,13 @@ li.time{
 button.comprar {
     background-color: rgb(17, 177, 17);
     color: white;
-    width: 45%;
+    width: 15%;
     margin-left: 7%;
 }
 button.vender {
     background-color: rgb(223, 9, 9);
     color: white;
-    width: 45%;
+    width: 15%;
     margin-left: 7%;
 }
 button.ler{
@@ -106,11 +106,9 @@ button.ler{
 
 
 /*Login*/
-#logoLogin {
-    width: 13vh;
-    position: relative;
-    left: 62vh;
-    top: 0vh;
+
+#logo3 {
+    margin-top: 13vh;
 }
 
 
@@ -136,6 +134,12 @@ section.porcentagem div{
     font-size: 16px;
 }
 
+
+
+/*Perfil*/
+section#perfil{
+    margin-top: 5%;
+}
 
 
 

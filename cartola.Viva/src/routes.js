@@ -17,6 +17,7 @@ routes.get('/users/:user_id', UserController.indexId)
 routes.post('/users', UserController.store)
 routes.put('/users/:id/v', UserController.updateV$)
 routes.put('/users/:id/p', UserController.updateP)
+routes.put('/users/:id', UserController.update)
 
 
 routes.get('/ottomanos', OttomanosController.index)

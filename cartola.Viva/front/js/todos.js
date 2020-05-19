@@ -1,15 +1,16 @@
-import Lib from './lib.mjs'
-function criarElemento(elemento, id, txt, função, endereçoId){
-    Lib.criarElemento(elemento, id, txt, função, endereçoId)
-}
-console.log(Lib.soma(2, 3))
+var usuario = JSON.parse(localStorage.getItem('usuario'))
+
 
 var listElement = document.querySelector('#app ul')
 
 
 var buttonElement = document.querySelector('#app button')
 
+
 var Ottomanos = JSON.parse(localStorage.getItem('object_Ottomanos')) || {}
+var jogador = JSON.parse(localStorage.getItem('object_Jogadores')) || {}
+
+var NovoTime = JSON.parse(localStorage.getItem('object_NovoTime')) || {}
 var todos = JSON.parse(localStorage.getItem('list_nomesjog')) || []
 var pre = JSON.parse(localStorage.getItem('list_preço')) || []
 var ids = JSON.parse(localStorage.getItem('list_id')) || []
@@ -27,15 +28,24 @@ if (now.getDate() === i.getdate && now.getMonth() === i.getmonth){
     console.log(now.getDate, now.getMonth)
   }
 }
+//Confrontos
 var time1 = [Ottomanos]
-var time2 = [Ottomanos]
+var time2 = [NovoTime]
+for (var i=0; i < 10; i++){
+  time1.push(Ottomanos)
+  time2.push(NovoTime)
+}
 var a = [];
 var img = [];
 var jogadores = [];
 var preço = [];
 var id = [];
 escolherConfronto(rodada)
-//Confrontos
+
+
+criarElemento('p', '', `Qual vai ser o elenco do ${usuario.nometime}? Você tem ${usuario.vivacoins}V$`, '', 'informações do usuário')
+
+
 
 function renderTodos() {
     listElement.innerHTML =  ''
@@ -71,6 +81,7 @@ function escolherConfronto(rodada) {
     return a.push(item);
   });
   img = nomeDoTime1.img;
+
 
   a = nomeDoTime1.jogadores;
   a = nomeDoTime2.jogadores.map(function (item) {
@@ -164,29 +175,29 @@ function mudarLayout2(n) {
 }
 
 function lerMais(n){
-    
+  console.log(jogador)
     document.querySelector(`#lerMais${n}`).remove()
-    criarElemento('button', `lerMenos${n}`, 'Menos informações', `lerMenos(${n})`, `div${n}2`)
+    criarElemento('button', `lerMenos${n}`, 'Menos informações', `lerMenos(${n})`, `div${n}b`)
     document.getElementById(`lerMenos${n}`).setAttribute('class', 'ler')
-    criarElemento('div', `div${n}3`, '', '', `div${n}2`)
-    criarElemento('p', '', `Media: ${Ottomanos.nomes[n-1].media}`, '', `div${n}3`)
-    criarElemento('p', '', `Ultima pontuação: ${Ottomanos.nomes[n-1].ultimapontuação}`, '', `div${n}3`)
-    
-    if(Ottomanos.nomes[n-1].valorização > 0){
-      criarElemento('p', '', `Valorização: ${Ottomanos.nomes[n-1].valorização}`, 'color: green;', `div${n}3`)
+    criarElemento('div', `div${n}c`, '', '', `div${n}b`)
+    criarElemento('p', '', `Media: ${jogador[n-1].media.toFixed(2)}`, '', `div${n}c`)
+    criarElemento('p', '', `Ultima pontuação: ${jogador[n-1].ultimapontuação.toFixed(2)}`, '', `div${n}c`)
+   
+    if(jogador[n-1].valorização > 0){
+      criarElemento('p', '', `Valorização: ${jogador[n-1].valorização.toFixed(2)}`, 'color: green;', `div${n}c`)
     }
     else{
-      if (Ottomanos.nomes[n-1].valorização === 0){
-        criarElemento('p', '', `Valorização: ${Ottomanos.nomes[n-1].valorização}`, '', `div${n}3`)
+      if (jogador[n-1].valorização === 0){
+        criarElemento('p', '', `Valorização: ${jogador[n-1].valorização.toFixed(2)}`, '', `div${n}c`)
         }else{
-      criarElemento('p', '', `Valorização: ${Ottomanos.nomes[n-1].valorização}`, 'color: red;', `div${n}3`)
+      criarElemento('p', '', `Valorização: ${jogador[n-1].valorização.toFixed(2)}`, 'color: red;', `div${n}c`)
         }
     }
 }
 function lerMenos(n){
-document.querySelector(`#div${n}3`).remove()
+document.querySelector(`#div${n}c`).remove()
 document.querySelector(`#lerMenos${n}`).remove()
-criarElemento('button', `lerMais${n}`, 'Mais informações', `lerMais(${n})`, `div${n}2`)
+criarElemento('button', `lerMais${n}`, 'Mais informações', `lerMais(${n})`, `div${n}b`)
 document.getElementById(`lerMais${n}`).setAttribute('class', 'ler')
 }
 
@@ -199,7 +210,7 @@ function verificar(){
         }
     var divfechar = document.querySelector('div#fechar')
     if (todos.length == 5){
-        if (timeprov<30){
+        if (timeprov<usuario.vivacoins){
             var linkFechar = document.createElement('a')
             var linkText = document.createTextNode('Fechar time')
             linkFechar.setAttribute('href', 'fecharTime.html')
@@ -223,11 +234,11 @@ var jog = []
 })
 .catch(error => console.log(error))*/
 function criarPg(jog){
-for (let i of jog){
+for (i of jog){
     criarElemento('section', `section${i.id}`, '', '', 'jogadores')
     document.getElementById(`section${i.id}`).setAttribute('class', 'alinhado')
     criarElemento('div', `div${i.id}`, '', '', `section${i.id}`)
-    criarElemento('div', `div${i.id}2`, '', '', `section${i.id}`)
+    criarElemento('div', `div${i.id}b`, '', '', `section${i.id}`)
     criarElemento('p', '', `${i.name}`, '', `div${i.id}`)
     criarElemento('img', '', `${i.img}`, 'width: 70px; height: 90px;', `div${i.id}`)
     if (ids.indexOf(i.id)!= -1){
@@ -237,8 +248,8 @@ for (let i of jog){
         criarElemento('button', `botão${i.id}`, `${i.preço.toFixed(2)}V$`, `addTodo(${i.id})`, `div${i.id}`)
         document.getElementById(`botão${i.id}`).setAttribute('class', 'comprar')
     }
-    criarElemento('br', '', '', '', `div${i.id}2`)
-    criarElemento('button', `lerMais${i.id}`, 'Mais informações', `lerMais(${i.id})`, `div${i.id}2`)
+    criarElemento('br', '', '', '', `div${i.id}b`)
+    criarElemento('button', `lerMais${i.id}`, 'Mais informações', `lerMais(${i.id})`, `div${i.id}b`)
     document.getElementById(`lerMais${i.id}`).setAttribute('class', 'ler')
     criarElemento('br', '', '', '', `jogadores`)
 }
@@ -247,3 +258,49 @@ for (let i of jog){
 
 
 
+function criarElemento(elemento, id, txt, função, endereçoId){
+    if (elemento === 'button'){
+      let endereço = document.getElementById(endereçoId)
+      let nome = document.createElement(elemento)
+      nome.appendChild(document.createTextNode(txt))
+      nome.setAttribute('id', id)
+      nome.setAttribute('onclick', função)
+      endereço.appendChild(nome)
+    }else{
+      if (elemento === 'input'){
+        let endereço = document.getElementById(endereçoId)
+        let nome = document.createElement(elemento)
+        nome.setAttribute('placeholder', txt)
+        nome.setAttribute('id', id)
+        nome.setAttribute('type', função)
+        endereço.appendChild(nome)
+        
+      }else{
+        if (elemento === 'a'){
+          let endereço = document.getElementById(endereçoId)
+          let nome = document.createElement(elemento)
+          nome.setAttribute('href', função)
+          nome.setAttribute('id', id)
+          nome.appendChild(document.createTextNode(txt))
+          endereço.appendChild(nome)
+        }else{
+          if(elemento === 'img'){
+            let endereço = document.getElementById(endereçoId)
+            let nome = document.createElement(elemento)
+            nome.setAttribute('src', `img/${txt}`)
+            nome.setAttribute('style', função)
+            nome.setAttribute('id', id)
+            nome.appendChild(document.createTextNode(txt))
+            endereço.appendChild(nome)
+          }else{
+            let endereço = document.getElementById(endereçoId)
+            let nome = document.createElement(elemento)
+            nome.appendChild(document.createTextNode(txt))
+            nome.setAttribute('id', id)
+            nome.setAttribute('style', função)
+            endereço.appendChild(nome)
+          }
+        }
+      }
+    }
+}

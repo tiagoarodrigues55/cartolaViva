@@ -1,11 +1,13 @@
  
-  import { criarElemento } from './js/lib.mjs'
+
+import Lib from './lib.mjs'
 
   console.log()
-       /*
+       
         var jogadores = []
         var rodada = 1  //MUDAR ISSO!!!!!!
         var usu = []
+        window.banco = function banco(){
         axios.get('http://localhost:3000/users').then(response => {
         usu = response.data
         axios.get(`http://localhost:3000/users/${rodada}/escalacaoR`).then(response => {
@@ -15,10 +17,33 @@
         Lib.tabelaRodada(jogadores, escalados, usu)
         })
         })
-        })*/
-        
-        criarElemento('button', '', 'eai', "criarElemento('p', '', 'eai', '', 'div' )", 'div')
-       
+        })
+    }
+    window.bancoGeral = function bancoGeral(){
+            axios.get('http://localhost:3000/users').then(response => {
+            usu = response.data
+            Lib.tabelaGeral(usu)
+            })
+    }
+    window.bancoJogadores = function bancoJogadores() {
+        axios.get('http://localhost:3000/jogadores').then(response => {
+            jogadores = response.data
+            Lib.tabelaJogadores(jogadores)
+            })
+    }
+    banco()
+      window.tabelaRodada = function tabelaRodada(jogadores, escalados, usu){
+          Lib.tabelaRodada(jogadores, escalados, usu)
+      }
+      window.tabelaGeral = function tabelaGeral(usu){
+        Lib.tabelaGeral(usu)
+    }
+    window.tabelaJogadores = function tabelaJogadores(jogadores){
+        Lib.tabelaJogadores(jogadores)
+    }
+       window.criarElemento = function criarElemento(elemento, id, txt, função, endereçoId){
+            Lib.criarElemento(elemento, id, txt, função, endereçoId)
+       }
   
     
         var timesEscalados = [jogadores]

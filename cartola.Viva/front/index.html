@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartola Viva</title>
 </head>
-<link rel="stylesheet" href="css/mobile.css" media= "(max-width:406px)">
-<link rel="stylesheet" href="css/cartola.css" media= "(min-width:406px)">
+<link rel="stylesheet" href="css/mobile.css" media= "(max-width:416px)">
+<link rel="stylesheet" href="css/cartola.css" media= "(min-width:416px)">
 
 <body id="telainicial">
     <nav id="menu">
@@ -19,9 +19,12 @@
             <li><a href="patrocinadores.html">Mais sobre nossos apoiadores</a></li>
             <li><a href="contatos.html">Quem somos e contatos</a></li>
             <li><a href="comoAjudar.html">Como Ajudar</a></li>
+            <li><a onclick="localStorage.clear()"  href="login.html">sair</a></li>
+            <li id="usu"></li>
+
         </ul>
     </nav>
-    <img src="img/logo.png" alt="logo1" id="logo">
+    <a href="usuario.html"><img src="img/logo.png" alt="logo1" id="logo"></a>
 
 <div id="corpo">
 
@@ -38,6 +41,6 @@
     </p></footer>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<script type="module" src="js/bancoDados.js"></script>
+<script  src="js/bancoDados.js"></script>
 </body>
 </html>

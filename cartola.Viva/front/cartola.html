@@ -20,6 +20,8 @@
             <li><a href="patrocinadores.html">Mais sobre nossos apoiadores</a></li>
             <li><a href="contatos.html">Quem somos e contatos</a></li>
             <li><a href="comoAjudar.html">Como Ajudar</a></li>
+            <li><a onclick="localStorage.clear()"  href="login.html">sair</a></li>
+            <li id="usu"></li>
         </ul>
        
     </nav>
@@ -27,7 +29,7 @@
 <div id="corpo">
     <header><h1>Monte seu Time</h1></header>
     <section class="alinhado">
-    <p id="informações do usuário">Nome do time e quanto tem para gastar</p>
+    <div id="informações do usuário"></div>
 </div>
     </div>
     </section>
@@ -56,8 +58,8 @@
 
     </p></footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-    <script type="module" src="js/bancoDados.js"></script>
-    <script type="module" src="js/todos.mjs"></script>
+    <script  src="js/bancoDados.js"></script>
+    <script  src="js/todos.js"></script>
     <script>
         
     </script>

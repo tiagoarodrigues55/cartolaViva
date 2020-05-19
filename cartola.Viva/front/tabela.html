@@ -19,13 +19,18 @@
             <li><a href="patrocinadores.html">Mais sobre nossos apoiadores</a></li>
             <li><a href="contatos.html">Quem somos e contatos</a></li>
             <li><a href="comoAjudar.html">Como Ajudar</a></li>
+            <li><a onclick="localStorage.clear()"  href="login.html">sair</a></li>
+            <li id="usu"></li>
+
         </ul>
     </nav>
     <img src="img/logo.png" alt="logo1" id="logo">
     <section id="sectionTabela">
         <div id="tabelas">
-            <div id="div" style="">
-               
+            <div id="div" >
+               <button onclick="banco()">Tabela Rodada</button>
+               <button onclick="bancoGeral()">Tabela Geral</button>
+               <button onclick="bancoJogadores()">Tabela Jogadores</button>
             </div>
         <table>
             <caption>
@@ -35,8 +40,9 @@
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 
-    <script type="module" src="tabela.js">
+    <script type="module" src="js/tabela.js">
   
     </script>
+    <script src="js/bancoDados.js"></script>
 </body>
 </html>

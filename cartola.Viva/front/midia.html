@@ -18,8 +18,10 @@
             <li><a href="midia.html">Fotos e Vídeos</a></li>
             <li><a href="patrocinadores.html">Mais sobre nossos apoiadores</a></li>
             <li><a href="contatos.html">Quem somos e contatos</a></li>
-            
             <li><a href="comoAjudar.html">Como Ajudar</a></li>
+            <li><a onclick="localStorage.clear()"  href="login.html">sair</a></li>
+            <li id="usu"></li>
+
         </ul>
         
     </nav>
@@ -34,6 +36,7 @@
 
     </p></footer>
 </div>
+<script src="js/bancoDados.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 <script type="module">
     import Lib from './js/lib.mjs'

@@ -1,7 +1,5 @@
-import Lib from './lib.mjs'
-
-console.log(Lib.soma(2, 3))
-
+var usuario = JSON.parse(localStorage.getItem('usuario'))
+criarElemento('a', '', `${usuario.nometime}`, 'usuario.html', 'usu')
 
 
 axios.get('http://localhost:3000/jogadores')
@@ -10,17 +8,29 @@ axios.get('http://localhost:3000/jogadores')
 
 const função = ( Apoio ) => {
     console.log(Apoio)
+    var Jogadores = Apoio
     var fotoOttomanos = []
 var nomesOttomanos = []
 var preçosOttomanos = []
 var idOttomanos =  []
+var fotoNovoTime = []
+var nomesNovoTime = []
+var preçosNovoTime = []
+var idNovoTime =  []
     for (let i of Apoio){
         if (i.id <= 6){
             fotoOttomanos.push(i.img)
             nomesOttomanos.push(i.name)
             preçosOttomanos.push(i.preço)
             idOttomanos.push(i)
+        }else{
+            if (i.id<=12){
+            fotoNovoTime.push(i.img)
+            nomesNovoTime.push(i.name)
+            preçosNovoTime.push(i.preço)
+            idNovoTime.push(i)
         }
+    }
     }
 var Ottomanos = {
     nomesReais: nomesOttomanos,
@@ -31,7 +41,16 @@ var Ottomanos = {
     jogadores: nomesOttomanos,
     preço: preçosOttomanos
 }
-var times = [Ottomanos]
+var NovoTime = {
+    nomesReais: nomesNovoTime,
+    nomes: idNovoTime.sort(function(a,b) {
+        return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
+        }),
+        img: fotoNovoTime,
+        jogadores: nomesNovoTime,
+        preço: preçosNovoTime
+}
+var times = [Ottomanos, NovoTime]
 var confrontos = []
 axios.get('http://localhost:3000/confronto')
 .then(response => {
@@ -43,7 +62,9 @@ axios.get('http://localhost:3000/confronto')
 
 
 console.log(Ottomanos)
+localStorage.setItem('object_Jogadores', JSON.stringify(Jogadores))
 localStorage.setItem('object_Ottomanos', JSON.stringify(Ottomanos))
+localStorage.setItem('object_NovoTime', JSON.stringify(NovoTime))
 localStorage.setItem('list_times', JSON.stringify(times))
 }
 
@@ -55,3 +76,49 @@ localStorage.setItem('list_times', JSON.stringify(times))
 
 var porcentagem = JSON.parse(localStorage.getItem('propaganda_porcentagens')) || {}
 
+function criarElemento(elemento, id, txt, função, endereçoId){
+    if (elemento === 'button'){
+      let endereço = document.getElementById(endereçoId)
+      let nome = document.createElement(elemento)
+      nome.appendChild(document.createTextNode(txt))
+      nome.setAttribute('id', id)
+      nome.setAttribute('onclick', função)
+      endereço.appendChild(nome)
+    }else{
+      if (elemento === 'input'){
+        let endereço = document.getElementById(endereçoId)
+        let nome = document.createElement(elemento)
+        nome.setAttribute('placeholder', txt)
+        nome.setAttribute('id', id)
+        nome.setAttribute('type', função)
+        endereço.appendChild(nome)
+        
+      }else{
+        if (elemento === 'a'){
+          let endereço = document.getElementById(endereçoId)
+          let nome = document.createElement(elemento)
+          nome.setAttribute('href', função)
+          nome.setAttribute('id', id)
+          nome.appendChild(document.createTextNode(txt))
+          endereço.appendChild(nome)
+        }else{
+          if(elemento === 'img'){
+            let endereço = document.getElementById(endereçoId)
+            let nome = document.createElement(elemento)
+            nome.setAttribute('src', `img/${txt}`)
+            nome.setAttribute('style', função)
+            nome.setAttribute('id', id)
+            nome.appendChild(document.createTextNode(txt))
+            endereço.appendChild(nome)
+          }else{
+            let endereço = document.getElementById(endereçoId)
+            let nome = document.createElement(elemento)
+            nome.appendChild(document.createTextNode(txt))
+            nome.setAttribute('id', id)
+            nome.setAttribute('style', função)
+            endereço.appendChild(nome)
+          }
+        }
+      }
+    }
+}

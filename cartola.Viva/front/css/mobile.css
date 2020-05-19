@@ -45,10 +45,11 @@ section.fullpg{
     position: relative;
     width: 100%;
 }
-#logoIndex{
-    margin-top: 20vh;
+div#logoIndex{
+    margin-top: 15vh;
     width: 100%;
 }
+
 
 
 /*Monte seu time*/
@@ -107,11 +108,8 @@ button.ler{
 
 
 /*Login*/
-#logoLogin {
-    width: 13vh;
-    position: relative;
-    left: 62vh;
-    top: 0vh;
+#logo3 {
+    margin-top: 13vh;
 }
 
 
@@ -138,6 +136,10 @@ section.porcentagem div{
 }
 
 
+/*Usuario*/
+section#perfil {
+    margin-top: 18vh;
+}
 
 
     /*Menu*/
@@ -159,7 +161,7 @@ nav#menu h1 {
 nav#menu a{
     text-decoration: none;
     color: white;
-    font-size: 10px;
+    font-size: 9px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 nav#menu a:hover{
@@ -177,5 +179,5 @@ img#logo {
     width: 20%;
     position: relative;
     left: 80%;
-    top: 12vh;
+    top: 11vh;
 }

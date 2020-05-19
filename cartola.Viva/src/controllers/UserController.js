@@ -31,5 +31,11 @@ module.exports = {
         const { pontos, ultimapontuação, vivacoins } = req.body
         const user = User.update({ pontos, ultimapontuação, vivacoins }, {where: { id: id}})
         return res.json(user)
+    },
+    async update(req, res){
+        const { id } = req.params
+        const { name, nometime, email, password} = req.body
+        const user = User.update({ name, nometime, email, password }, {where: { id: id}})
+        return res.json(user)
     }
 }

@@ -1,4 +1,5 @@
-export class Lib { 
+
+class Lib { 
   static  criarElemento(elemento, id, txt, função, endereçoId){
     if (elemento === 'button'){
       let endereço = document.getElementById(endereçoId)
@@ -46,7 +47,7 @@ export class Lib {
     }
   }static soma(a, b){
     return a+b
-  }static tabelaJogadores(){
+  }static tabelaJogadores(jogadores){
     document.querySelector('table').remove()
     document.querySelector('#tabelas').appendChild(document.createElement('table'))
     var tabela3 = []
@@ -62,7 +63,7 @@ export class Lib {
             media: i.media.toFixed(2),
         })
     }
-    tabelas(tabela3)
+    this.tabelas(tabela3)
 }
 static tabelaGeral(usu){
     document.querySelector('table').remove()
@@ -81,7 +82,7 @@ static tabelaGeral(usu){
         })
         contador++
     }
-    tabelas(tabela2)
+    this.tabelas(tabela2)
 }
 static tabelaRodada(jogadores, escalados, usu){
     console.log(jogadores)
@@ -136,49 +137,5 @@ static tabelaRodada(jogadores, escalados, usu){
     var caption = document.querySelector('caption')
     }
 }
-export function criarElemento(elemento, id, txt, função, endereçoId){
-  if (elemento === 'button'){
-    let endereço = document.getElementById(endereçoId)
-    let nome = document.createElement(elemento)
-    nome.appendChild(document.createTextNode(txt))
-    nome.setAttribute('id', id)
-    nome.setAttribute('onclick', função)
-    endereço.appendChild(nome)
-  }else{
-    if (elemento === 'input'){
-      let endereço = document.getElementById(endereçoId)
-      let nome = document.createElement(elemento)
-      nome.setAttribute('placeholder', txt)
-      nome.setAttribute('id', id)
-      nome.setAttribute('type', função)
-      endereço.appendChild(nome)
-      
-    }else{
-      if (elemento === 'a'){
-        let endereço = document.getElementById(endereçoId)
-        let nome = document.createElement(elemento)
-        nome.setAttribute('href', função)
-        nome.setAttribute('id', id)
-        nome.appendChild(document.createTextNode(txt))
-        endereço.appendChild(nome)
-      }else{
-        if(elemento === 'img'){
-          let endereço = document.getElementById(endereçoId)
-          let nome = document.createElement(elemento)
-          nome.setAttribute('src', `img/${txt}`)
-          nome.setAttribute('style', função)
-          nome.setAttribute('id', id)
-          nome.appendChild(document.createTextNode(txt))
-          endereço.appendChild(nome)
-        }else{
-          let endereço = document.getElementById(endereçoId)
-          let nome = document.createElement(elemento)
-          nome.appendChild(document.createTextNode(txt))
-          nome.setAttribute('id', id)
-          nome.setAttribute('style', função)
-          endereço.appendChild(nome)
-        }
-      }
-    }
-  }
-}
+
+export default Lib
